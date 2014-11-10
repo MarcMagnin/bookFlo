@@ -1,0 +1,165 @@
+﻿ 
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
+
+/* FlexSlider Necessary Styles
+*********************************/ 
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flex-pauseplay span {text-transform: capitalize;}
+/* Clearfix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
+html[xmlns] .slides {display: block;} 
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+/* Direction Nav */
+.flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block; background: url(../images/slider/bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 50%; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease;}
+.flex-direction-nav .flex-next {background-position: 100% 0;  }
+.flex-direction-nav .flex-prev {left: -36px;}
+.flexslider:hover .flex-next {opacity: 0.8; right: 5%;}
+
+@media screen and (min-width: 0px) and (max-width:1099px) {
+.flexslider:hover .flex-next {right: 10%;}
+}
+
+.flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+.flex-direction-nav .disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+/* Control Nav */
+.flex-control-nav {width: 100%; position: absolute; bottom: -40px; text-align: center;}
+.flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
+.flex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; box-shadow: inset 0 0 3px rgba(0,0,0,0.3);}
+.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
+.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9); cursor: default; }
+
+.flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
+.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+.flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+.flex-control-thumbs img:hover {opacity: 1;}
+.flex-control-thumbs .active {opacity: 1; cursor: default;}
+
+
+
+.backgroundDiv {
+   display: inline-block;
+   height: 100%;width: 95%;
+   overflow-y: hidden;
+}  
+@media screen and (min-width: 0px) and (max-width:1099px) {
+    .backgroundDiv {
+       width: 90%;
+    }  
+}
+
+
+.sliderImage {
+      height: 100%;
+    top: 0;
+}
+
+.slides li{
+    position: relative;
+    background-size: cover;                            
+    height: 100%;
+    background-position: 50% 50%;
+}
+
+.sliderContent {
+    width: 610px;
+    height: 225px;
+     font-size: 14px;
+    position: absolute;
+    cursor: pointer;
+    font-family: ArcherLight, Arial, sans-serif;
+    font-weight: bold;
+    color: white;
+    bottom: 10%;
+    text-align: left;
+   
+    background: #000000;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.sliderContent:hover{
+    background: #000000;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+
+.sliderCouvTitle {
+    top: 13px; 
+}
+.sliderCouvTitle, .sliderText   {
+    left: 15px;
+    max-width: 430px;
+    position: absolute;
+}
+
+.sliderCouv {
+     position: absolute;
+    width: 120px;
+    top: 20px; right: 20px;
+
+}
+
+ .sliderText {
+   
+     top: 60%;
+  
+ }
+
+
+@media screen and (min-width: 0px) and (max-width:1099px) {
+    .sliderContent {
+        width: 420px;
+        height: 155px;
+        font-size: 10px;
+        padding-top: 10px;
+     padding-left: 10px;
+    }
+    .sliderCouvTitle, .sliderText  {
+        max-width: 300px;
+        max-height: 80px;
+    }
+
+    .sliderCouv {
+        width: 80px;
+      right: 13px;
+    }
+
+    .sliderText {
+   
+  
+     }
+}
+
+
+ 
+
+
+
+
+/*
+
+                <ul class="slides" >
+                    <li style="background-image: url(docs%20site/Cousins-Karlsson-3.jpg);">
+                        <div class="sliderContent" >
+                            <img class="sliderCouvTitle" src="docs%20site/karlssons.png"/>
+                            <p class="sliderText"> 3ème opus de la série en librairie <br/>dès le 8 janvier</p>
+                            <img class="sliderCouv" src="docs%20site/Cousins%20Karlsson%203_couv.jpg" />
+                        </div>
+                    </li>
+			          
+*/
+                         

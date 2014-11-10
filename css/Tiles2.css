@@ -1,0 +1,205 @@
+﻿.drop-box {
+     transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;  
+}
+.tileMenu {
+    width:150px;
+    display :inline-block;
+    vertical-align:middle;
+}
+.drop-box.dragover {
+    background: rgba(100, 255, 100, 0.50);
+}
+
+.footer {
+    position:absolute;
+    bottom: 0px;
+    right:0px;
+    font-size:0.8em;
+}
+.isotope-hidden {
+    display:none !important;
+    /*transform: translate3d(0px, 0px, 0px) scale3d(0.001, 0.001, 1) !important;*/
+}
+
+
+.tilesContainer {
+  padding-left:150px;
+    padding-bottom:150px;
+    height: -moz-calc(100% - 250px);
+    height: -webkit-calc(100% - 250px);
+    height: -o-calc(100% - 250px);
+    height: calc(100% - 250px);
+    
+    /*white-space: nowrap;*/
+    width: -moz-calc(100% - 150px) !important;
+    width: -webkit-calc(100% - 150px) !important;
+    width: -o-calc(100% - 150px) !important;
+    width: calc(100% - 150px) !important;
+
+	overflow-y: hidden !important;
+	overflow-x: scroll !important;
+	-webkit-overflow-scrolling: touch;
+
+      
+    scrollbar-base-color : transparent;  
+    scrollbar-track-color : transparent;
+    scrollbar-highlight-color : transparent;
+    scrollbar-arrow-color : transparent;
+    scrollbar-face-color : rgba(3, 255, 8, 0.17);  
+}
+
+
+/*http://css-tricks.com/arranging-elements-top-bottom-instead-left-right-float/*/
+
+/* clear fix */
+/*.tilesContainer:after {
+ content: '';
+  display: block;
+  clear: both;
+}*/
+p {
+    margin-top : 5px;
+    margin-bottom: 0px;
+}
+
+.smallHeightImage {
+    max-height : 250px;
+        
+}
+
+.tile {
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    background:red;
+    padding: 5px;
+    margin-right: 3px;
+    margin-top: 3px; 
+    
+   
+     
+    -o-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-transition: all 0.3s ease-out;/*, position 0s linear 1s;*/
+    transition: all .3s ease-out;
+   
+
+    
+    
+}
+
+
+.univers2 {
+    background: rgba(40, 226, 40, 0.3);
+}
+
+.large {
+    width: 800px;
+    /*height: calc(100% - 200px);*/
+    height: 100%;
+    z-index: 100;
+}
+.large .auteurLink {
+    display: block;
+}
+.auteurLink {
+    display: none;
+}
+
+.tileLeftPart {
+    display :inline;
+    vertical-align:middle;
+    
+}
+
+.tileLeftPartDetails {
+    display:none;
+    -webkit-flex-direction: column;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   overflow:auto;
+       
+}
+
+.tileTextArea {
+  
+    /*max-height: -moz-calc(100% - 250px);
+    max-height: -webkit-calc(100% - 250px);
+    max-height: -o-calc(100% - 250px);
+    max-height: calc(100% - 250px);*/
+    
+    display:none;
+
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:5px;
+    
+    /*transition: all .2s ease-out 1;
+    -o-transition: all .2s ease-out 1;
+    -moz-transition: all .2s ease-out 1;
+    -webkit-transition: all .2s ease-out 1;*/
+     width:600px;
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.tileTextArea > img {
+    width:95%;
+}
+
+.tileTitle {
+    font-size: 20px;
+    font-family: ArcherLight, Helvetica, Arial, sans-serif;
+}
+
+.tileText {
+    /*-webkit-column-rule: 3px outset #ff00ff;*/
+    /*height: -moz-calc(100% - 45px);
+    height: -webkit-calc(100% - 45px);
+    height: -o-calc(100% - 45px);
+    height: calc(100% - 45px);*/
+   
+    text-align:justify;
+
+
+
+    /*font-size: 18px;*/
+    font-family: ArcherLight, Helvetica, Arial, sans-serif;
+
+
+    transition: all .2s ease-out .3s;
+    -o-transition: all .2s ease-out .3s;
+    -moz-transition: all .2s ease-out .3s;
+-webkit-transition: all .2s ease-out .3s;
+}
+
+
+
+.nouveautesTitle {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    color: white;
+    font-family: ArcherLight;
+    font-size: 35px;
+}
+
+.filters{
+    font-family: ArcherLight;
+    font-size: 35px;
+    color: white;
+    top: 10px;
+    display: inline-block;
+    position: absolute;
+}
+
+
+.filters li{
+    display: inline-block;
+    cursor: pointer;
+    padding-left: 15px;
+}

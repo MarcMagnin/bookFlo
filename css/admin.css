@@ -1,0 +1,20 @@
+﻿textarea {
+    width:100%;
+    height: 150px;
+}
+.details {
+    position:relative;
+}
+.drop-image {
+    background:grey;
+    width:200px;
+    height:200px;
+}
+.delete-cross {
+    background : white;
+    color:red;
+    position:absolute;
+    top:0px;
+    right:0px;
+    padding:5px;
+}

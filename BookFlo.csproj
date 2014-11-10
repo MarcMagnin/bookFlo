@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{811F30B1-B32A-419E-BE9F-5F721F54EFF7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BookFlo</RootNamespace>
+    <AssemblyName>BookFlo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\admin.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\Menu.css" />
+    <Content Include="css\Menu2.css" />
+    <Content Include="css\Menu3.css" />
+    <Content Include="css\Slider.css" />
+    <Content Include="css\Tiles.css" />
+    <Content Include="css\Tiles2.css" />
+    <Content Include="css\Tiles3.css" />
+    <Content Include="indexAdmin.html" />
+    <Content Include="index.html" />
+    <Content Include="js\angular-file-upload-html5-shim.js" />
+    <Content Include="js\angular-file-upload.js" />
+    <Content Include="js\angular.min.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\catalogue-app\app.js" />
+    <Content Include="js\catalogue-app\controllers\mainController.js" />
+    <Content Include="js\catalogue-app\controllers\tileDetailController.js" />
+    <Content Include="js\FileAPI.js" />
+    <Content Include="js\isotope\.gitignore" />
+    <Content Include="js\isotope\css\style.css" />
+    <Content Include="js\isotope\index.html" />
+    <Content Include="js\isotope\jquery.isotope.js" />
+    <Content Include="js\isotope\jquery.isotope.min.js" />
+    <Content Include="js\isotope\js\fake-element.js" />
+    <Content Include="js\isotope\js\jquery-1.7.1.min.js" />
+    <Content Include="js\isotope\js\jquery.ba-bbq.min.js" />
+    <Content Include="js\isotope\js\jquery.infinitescroll.min.js" />
+    <Content Include="js\isotope\js\make-big-graph-projects.js" />
+    <Content Include="js\isotope\_includes\add-buttons.js" />
+    <Content Include="js\isotope\_includes\change-sizes.js" />
+    <Content Include="js\isotope\_includes\developer-buy-button.html" />
+    <Content Include="js\isotope\_includes\element-partial.html" />
+    <Content Include="js\isotope\_includes\elements-demo-foot.html" />
+    <Content Include="js\isotope\_includes\elements-demo-head.html" />
+    <Content Include="js\isotope\_includes\filter-buttons.html" />
+    <Content Include="js\isotope\_includes\inf-scroll-page.html" />
+    <Content Include="js\isotope\_includes\layout-change.js" />
+    <Content Include="js\isotope\_includes\layout-options.html" />
+    <Content Include="js\isotope\_includes\option-set-buttons.js" />
+    <Content Include="js\isotope\_includes\org-buy-button.html" />
+    <Content Include="js\isotope\_includes\random-sizes.js" />
+    <Content Include="js\isotope\_includes\sort-buttons.html" />
+    <Content Include="js\isotope\_layouts\default.html" />
+    <Content Include="js\isotope\_posts\custom-layout-modes\2011-05-18-centered-masonry.html" />
+    <Content Include="js\isotope\_posts\custom-layout-modes\2011-05-22-category-rows.html" />
+    <Content Include="js\isotope\_posts\custom-layout-modes\2011-07-07-masonry-corner-stamp.html" />
+    <Content Include="js\isotope\_posts\custom-layout-modes\2011-07-14-masonry-gutters.html" />
+    <Content Include="js\isotope\_posts\custom-layout-modes\2011-10-18-spine-align.html" />
+    <Content Include="js\isotope\_posts\custom-layout-modes\2011-12-05-big-graph.html" />
+    <Content Include="js\isotope\_posts\custom-layout-modes\2012-01-03-masonry-column-shift.html" />
+    <Content Include="js\isotope\_posts\demos\2010-12-12-basic.html" />
+    <Content Include="js\isotope\_posts\demos\2010-12-13-elements-complete.html" />
+    <Content Include="js\isotope\_posts\demos\2010-12-16-elements-partial.html" />
+    <Content Include="js\isotope\_posts\demos\2010-12-29-layout-modes.html" />
+    <Content Include="js\isotope\_posts\demos\2010-12-30-filtering.html" />
+    <Content Include="js\isotope\_posts\demos\2010-12-30-sorting.html" />
+    <Content Include="js\isotope\_posts\demos\2010-12-31-relayout.html" />
+    <Content Include="js\isotope\_posts\demos\2011-01-02-adding-items.html" />
+    <Content Include="js\isotope\_posts\demos\2011-01-02-infinite-scroll.html" />
+    <Content Include="js\isotope\_posts\demos\2011-01-11-images.html" />
+    <Content Include="js\isotope\_posts\demos\2011-03-29-combination-filters.html" />
+    <Content Include="js\isotope\_posts\demos\2011-06-13-hash-history.html" />
+    <Content Include="js\isotope\_posts\demos\2011-09-30-fluid-responsive.html" />
+    <Content Include="js\isotope\_posts\demos\2011-12-22-removing.html" />
+    <Content Include="js\isotope\_posts\pages\2011-01-01-2.html" />
+    <Content Include="js\isotope\_posts\pages\2011-01-01-3.html" />
+    <Content Include="js\isotope\_posts\pages\2011-01-01-4.html" />
+    <Content Include="js\isotope\_posts\pages\2011-01-01-5.html" />
+    <Content Include="js\isotope\_posts\pages\2011-01-01-6.html" />
+    <Content Include="js\isotope\_posts\tests\2010-01-01-index.html" />
+    <Content Include="js\isotope\_posts\tests\2011-03-27-destroy.html" />
+    <Content Include="js\isotope\_posts\tests\2011-03-27-flash.html" />
+    <Content Include="js\isotope\_posts\tests\2011-03-27-no-items.html" />
+    <Content Include="js\isotope\_posts\tests\2011-04-26-item-position-data.html" />
+    <Content Include="js\isotope\_posts\tests\2011-05-13-jquery-animation.html" />
+    <Content Include="js\isotope\_posts\tests\2011-05-24-elements-complete-test.html" />
+    <Content Include="js\isotope\_posts\tests\2011-05-31-tiny-text.html" />
+    <Content Include="js\isotope\_posts\tests\2011-08-19-right-to-left.html" />
+    <Content Include="js\isotope\_posts\tests\2011-08-23-unclickable-filtered.html" />
+    <Content Include="js\isotope\_posts\tests\2011-10-19-callbacks.html" />
+    <Content Include="js\isotope\_posts\tests\2012-02-07-onlayout.html" />
+    <Content Include="js\isotope\_posts\tests\2012-08-11-combo-sort-history.html" />
+    <Content Include="js\jquery-1.9.1.js" />
+    <Content Include="js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="js\stuff.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="js\isotope\.tm_properties" />
+    <Content Include="js\isotope\CONTRIBUTING.mdown" />
+    <Content Include="js\isotope\minify.sh" />
+    <Content Include="js\isotope\README.mdown" />
+    <Content Include="js\isotope\_config.yml" />
+    <Content Include="js\isotope\_posts\docs\2010-12-01-introduction.mdown" />
+    <Content Include="js\isotope\_posts\docs\2010-12-03-options.mdown" />
+    <Content Include="js\isotope\_posts\docs\2010-12-04-methods.mdown" />
+    <Content Include="js\isotope\_posts\docs\2010-12-05-layout-modes.mdown" />
+    <Content Include="js\isotope\_posts\docs\2010-12-06-filtering.mdown" />
+    <Content Include="js\isotope\_posts\docs\2010-12-07-sorting.mdown" />
+    <Content Include="js\isotope\_posts\docs\2010-12-09-animating.mdown" />
+    <Content Include="js\isotope\_posts\docs\2010-12-10-adding-items.mdown" />
+    <Content Include="js\isotope\_posts\docs\2011-05-25-extending-isotope.mdown" />
+    <Content Include="js\isotope\_posts\docs\2011-06-16-hash-history-jquery-bbq.mdown" />
+    <Content Include="js\isotope\_posts\docs\2011-12-11-help.mdown" />
+    <Content Include="js\isotope\_posts\docs\2011-12-20-license.mdown" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:41492/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

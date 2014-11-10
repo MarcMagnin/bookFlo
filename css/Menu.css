@@ -1,0 +1,102 @@
+﻿
+.menu {
+    top: -5px;
+    right: 0;
+    
+    padding:  8px;
+   
+    position: fixed;
+    z-index: 1000;
+    text-align: center ;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    
+     color: white;
+    color: rgba(255,255,255,1);
+    /* fallback */
+    background-color: #000000;
+    background-color: rgba(0,0,0,0.5);
+
+    /*background-image: url(../images/LOGO-DOS-ETM-bitmap.png);
+    background-size: 53px;
+    background-repeat: no-repeat;
+    background-position: 99% 2px;*/
+
+    transition: all .2s ease-out 0;
+    -o-transition: all .2s ease-out 0;
+    -moz-transition: all .2s ease-out 0;
+    -webkit-transition: all .2s ease-out 0;
+}
+.menu ul
+{
+    list-style-type:none;
+    padding:0px;
+    margin: 0;
+    font-size: 1.5em;
+    font-family: ArcherLight;
+    text-align: center; /* what you wanted all along */
+    position: relative;
+    width: 50px;
+   
+}
+.menu:hover {
+    
+    background-color: rgba(0,0,0,0.5);
+   
+}
+    
+.floatingmenu{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-align: center; /* what you wanted all along */
+    position: relative; /* allow reference for absolute element */
+    
+
+}
+.floatingmenu p{
+    padding: 3px 5px 3px 5px;
+}
+
+
+.hiddenfloatingmenu {
+    overflow: visible !important;
+    /*transition: all .5s ease-out 0;
+    -o-transition: all .5s ease-out 0;
+    -moz-transition: all .5s ease-out 0;
+    -webkit-transition: all .5s ease-out 0;*/
+    white-space: nowrap;
+    display: none;
+    text-align: center;
+    width: 20px;
+}
+
+
+.hiddenfloatingmenu a{
+    margin-left: -30px;
+    padding: 5px 0 0 4px;
+    opacity: 0;
+    display: table-caption;
+    -webkit-transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s ;
+    -o-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+    
+    text-align: left;
+
+    
+
+    /*fallback*/
+    color: white;
+    color: rgba(255,255,255,0.7);
+}
+.hiddenfloatingmenu a:hover {
+    text-shadow:0px 0px 8px  rgba(255, 255, 255, 0.7)    ;
+    color: rgba(255,255,255,1);
+}
