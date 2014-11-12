@@ -129,6 +129,9 @@
                 X
             </a>
             <div class="tileMenu">
+                <a ng-click="addHeader($index, item)">
+                    Ajouter une entête
+                </a>
                 <a ng-click="addText($index, item)">
                     Ajouter du texte
                 </a>
@@ -144,36 +147,25 @@
             <div class="tileLeftPart">
                 <img src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
                 <div class="tileLeftPartDetails">
-
-                    {{item.Title}}
-                    <a href="#" data-filter="*">Tous</a>
-                    <a href="#" data-filter=".tag1">Animaux / Bestiaires</a>
-                    <a href="#" data-filter=".tag2">Humour</a>
-                    <a href="#" data-filter=".tag3">Autre</a>
-                    <p>septembre 2014</p>
-                    <p>10 x 20 cm</p>
-                    <p>32 pages</p>
-                    <p>ISBN 978-2-36474-505-6</p>
-                    <p>prix indicatif : 10.90 €</p>
+                    <input ng-model="item.Title" />
+                    <tags item="item"></tags>
+                   
 
                 </div>
             </div>
             <div class="tileTextArea">
-                <h1 class="tileTitle">Art Factory</h1>
-
                 <div class="details" ng-repeat="detail in item.Details" ng-controller="tileDetailController">
                     <a class="delete-cross"
                        ng-click="deleteDetail($index, item)">
                         X
                     </a>
-                    <div>
-                        <div ng-switch="detail.type">
-                            <img ng-switch-when="image" class="drop-box drop-image"
-                                 ng-file-drop="onAddImage($files, item, detail)"
-                                 ng-file-drop-available="true" 
-                                 src="{{detail.value}}"/>
-                            <textarea ng-switch-when="text" ng-model="detail.value" />
-                        </div>
+                    <div ng-switch="detail.type">
+                        <textarea ng-switch-when="title" class="tile-header admin-tile-header" ng-model="detail.value"></textarea>
+                        <textarea ng-switch-when="text" ng-model="detail.value" ></textarea>
+                        <img ng-switch-when="image" class="drop-box drop-image"
+                             ng-file-drop="onAddImage($files, item, detail)"
+                             ng-file-drop-available="true"
+                             src="{{detail.value}}" />
                     </div>
                 </div>
             </div>

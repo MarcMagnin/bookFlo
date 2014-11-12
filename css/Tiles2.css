@@ -23,7 +23,9 @@
     display:none !important;
     /*transform: translate3d(0px, 0px, 0px) scale3d(0.001, 0.001, 1) !important;*/
 }
-
+.tile-header {
+    font-size :2em;
+}
 
 .tilesContainer {
   padding-left:150px;
@@ -75,8 +77,9 @@ p {
     display: flex;
     align-items: flex-start;
     cursor: pointer;
-    background:red;
-    padding: 5px;
+    background:rgb(255, 255, 255);
+    padding: 10px 0 10px 10px;
+
     margin-right: 3px;
     margin-top: 3px; 
     
@@ -116,6 +119,34 @@ p {
     
 }
 
+.vignette {
+    display: flex;
+    flex-direction:row;
+}
+.tileHeroImage {
+    padding-right:30px;
+}
+.vertical-text {
+    position:absolute;
+    
+    font-size:1.5em;  
+    font-family:Garamond;
+    overflow:hidden;
+	-ms-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+
+	-ms-transform-origin: left top 0;
+	-moz-transform-origin: left top 0;
+	-webkit-transform-origin: left top 0;
+	transform-origin: left top 0;
+
+	/*background: rgba(0, 0, 0, 0.75);*/
+	color: rgba(0, 0, 0, 0.60);
+	padding-left: 10px;
+	/*text-transform: uppercase;*/
+}
 .tileLeftPartDetails {
     display:none;
     -webkit-flex-direction: column;

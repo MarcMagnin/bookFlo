@@ -28,10 +28,7 @@ var Update = function () {
 };
 
 
-
-
-//http://localhost:8081/databases/Illustrateurs/indexes/dynamic/Illustrateur?include=Tags.,TagId
-var mainController = ['$scope', '$http', '$timeout', '$upload', function ($scope, $http, $timeout, $upload) {
+app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', function ($scope, $http, $timeout, $upload) {
     $scope.apiRootUrl = "http://localhost:8081/databases/BookFlo";
     $scope.searchWord = "";
 
@@ -106,6 +103,29 @@ var mainController = ['$scope', '$http', '$timeout', '$upload', function ($scope
     };
 
     //http://localhost:8080/indexes/dynamic?query=Category:Ravens
+
+    $scope.addHeader = function ($index, item) {
+        if (!item.Details)
+            item.Details = new Array();
+        item.Details.push({
+            value: "Title",
+            type: "title"
+        })
+        $http({
+            method: 'PUT',
+            headers: { 'Raven-Entity-Name': 'Item' },
+            url: $scope.apiRootUrl + '/docs/' + item.Id,
+            data: angular.toJson(item)
+        }).
+        success(function (data, status, headers, config) {
+
+        }).
+        error(function (data, status, headers, config) {
+
+        });
+    }
+
+
 
     $scope.addImage = function ($index, item) {
         if (!item.Details)
@@ -373,4 +393,4 @@ var mainController = ['$scope', '$http', '$timeout', '$upload', function ($scope
     };
 
 
-}];
+}]);

@@ -1,14 +1,43 @@
-﻿textarea {
+﻿
+.tags {
+    display:flex;
+    -webkit-flex-direction: column;
+   -ms-flex-direction: column;
+   flex-direction: column;
+}
+.tag {
+    margin: 10px 0;
+    border-radius: 6px;
+    background-color: #EFEFEF;
+    border: 1px solid #DDD;
+    padding: 5px;
+    margin-right: 10px;
+    color:blue;
+   text-decoration:underline;
+}
+.tag:hover {
+    color: red;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+textarea {
     width:100%;
     height: 150px;
 }
 .details {
     position:relative;
 }
+.admin-tile-header {
+    height:auto;
+}
 .drop-image {
     background:grey;
-    width:200px;
-    height:200px;
+    min-width:200px;
+    min-height:200px;
+    max-width:400px;
+    max-height:200px;
 }
 .delete-cross {
     background : white;

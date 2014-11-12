@@ -1,4 +1,4 @@
-﻿var tileDetailController = ['$scope', '$http', '$timeout', '$upload', function ($scope, $http, $timeout, $upload) {
+﻿app.controller("tileDetailController", ['$scope', '$http', '$timeout', '$upload', function ($scope, $http, $timeout, $upload) {
 
     var deleteImage = function (url) {
         // delete prev image if overridden
@@ -107,4 +107,4 @@
     };
 
 
-}];
+}]);
