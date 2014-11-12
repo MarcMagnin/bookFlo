@@ -95,23 +95,20 @@ app.directive('isotopethis', function () {
             }, 200);
             
 
+            elm.find("a").click(function () {
+                var selector = $(this).attr('data-filter');
+                $container.isotope({ filter: selector });
+                //setTimeout(function () {
+                //    var hiddenItems = $('.isotope-hidden');
+                //}, 300);
+            });
 
             //// TILE CLICK
             elm.click(function () {
                 var $this = $(this);
-                $container.isotope('reLayout');
+                //$container.isotope('layout');
                 // filters
-                $this.find("a").click(function () {
-                    var selector = $(this).attr('data-filter');
-                    $container.isotope({ filter: selector });
-                    //setTimeout(function () {
-                    //    var hiddenItems = $('.isotope-hidden');
-                    //}, 300);
-                });
-
-
-
-
+              
                 if (prev) {
                     //prev.find(".tileTextArea").slideToggle(0);
                     //$container.isotope('reLayout');
@@ -136,8 +133,6 @@ app.directive('isotopethis', function () {
                     {
                         "display": "ms-flexbox",
                         "display": "flex",
-
-
                     });
                 var tileTextArea = $this.find(".tileTextArea");
                 //$this.find("img").toggleClass("smallHeightImage");

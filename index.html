@@ -5,79 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Editions Thierry Magnier</title>
-    <link href="css/Slider.css" rel="stylesheet" />
     <link href="css/Tiles2.css" rel="stylesheet" />
     <link href="css/Menu2.css" rel="stylesheet" />
+
     <style>
-        html, body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-        /*body {
-            width: 90%;
-            padding-left: 4rem;
-        }*/
-
-        body {
-            background: rgb(227, 227, 227);
-            background-image: url("docs site/Cousins-Karlsson-3.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            /*background-position:98% 98%;*/
-            background-size: cover;
-        }
-
-        /*height : 300px;
-          white-space: nowrap;
-          overflow-y: hidden;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          padding: 1rem;
-          background-color: #ccc;*/
+        /* inherit height from window */
+html, body { height: 100%; 
+             width:100%;
+             background:rgb(222, 222, 222);
+}
 
 
-        @media screen and (min-width: 0px) and (max-width:800px) and (max-height:800px) {
-            body {
-                width: 100%;
-                padding-left: 0;
-            }
-
-            .menu {
-                margin-top: 0px;
-                margin-left: 0px;
-                font-size: 1em;
-                padding-left: 0;
-                text-align: center;
-            }
-
-            .tilesContainer {
-                padding-left: 0;
-            }
-
-            .floatingmenu {
-                width: 100px;
-            }
-        }
     </style>
-    <script src="js/jquery-1.9.1.js"></script>
-
-    <script src="js/isotope/jquery.isotope.min.js"></script>
-    <!--contains easing animations as well -->
-    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="js/stuff.js"></script>
-
-    <script src="js/FileAPI.js"></script>
-    <script src="js/angular-file-upload-html5-shim.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script src="js/angular-file-upload.js"></script>
-
-    <script type="text/javascript" src="js/catalogue-app/app.js"></script>
-    <script type="text/javascript" src="js/catalogue-app/controllers/mainController.js"></script>
-
 </head>
-<body  ng-app="BookFlo" ng-controller="mainController" ng-init="init()">
+<body ng-app="BookFlo" ng-controller="mainController" ng-init="init()">
     <p class="footer">Designed by <a href="http://" target="_blank">Florie Briand</a> and Marc Magnin - 2014 </p>
 
     <div class="menu">
@@ -125,7 +66,7 @@
                     <img class="tileHeroImage" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
                     <div class="vertical-text">{{item.Title}}</div>
                 </div>
-                
+
                 <div class="tileLeftPartDetails">
                     <a ng-repeat="tag in item.Tags" class="tag">{{tag}}</a>
                 </div>
@@ -134,7 +75,7 @@
                 <div class="details" ng-repeat="detail in item.Details">
                     <div ng-switch="detail.type">
                         <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
-                        <p ng-switch-when="text" >{{detail.value}}</p>
+                        <p ng-switch-when="text">{{detail.value}}</p>
                         <img ng-switch-when="image" src="{{detail.value}}" />
                     </div>
                 </div>
@@ -143,5 +84,20 @@
         </div>
     </div>
 
+    <script src="js/jquery-1.9.1.js"></script>
+    <!--<script src="js/isotope/isotope.pkgd.js"></script>
+    <script src="js/isotope/masonryHorizontal.js"></script>-->
+    <script src="js/isotope/jquery.isotope.min.js"></script>
+    <!--contains easing animations as well -->
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/stuff.js"></script>
+
+    <script src="js/FileAPI.js"></script>
+    <script src="js/angular-file-upload-html5-shim.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script src="js/angular-file-upload.js"></script>
+
+    <script type="text/javascript" src="js/catalogue-app/app.js"></script>
+    <script type="text/javascript" src="js/catalogue-app/controllers/mainController.js"></script>
 </body>
 </html>

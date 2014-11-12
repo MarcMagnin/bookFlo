@@ -51,19 +51,20 @@ var xStart, yStart = 0;
 
 
 
-
-
 $(document).ready(function () {
-
-
-
 
     var $window = $(window);
 
 
     var $container = $('.tilesContainer');
 
-   
+    // change layout mode
+    //$container.isotope({ layoutMode: "masonryHorizontal" });
+    $container.isotope({
+        layoutMode: 'masonryHorizontal',
+        itemSelector: '.tile',
+        masonryHorizontal: { rowHeight: 20 },
+    });
 
     //////
     ///// MENU
@@ -104,6 +105,7 @@ $(document).ready(function () {
 
     var previousValue;
     function setWindowHeight() {
+        return;
         var windowHeight = window.innerHeight;
         document.body.style.height = windowHeight + "px";
 
@@ -161,8 +163,7 @@ $(document).ready(function () {
         $container.isotope('reLayout');
     }
 
-    // change layout mode
-    $container.isotope({ layoutMode: "masonryHorizontal" });
+    
 
     //  setWindowHeight();
 

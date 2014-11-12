@@ -81,6 +81,7 @@
     <Content Include="js\isotope\.gitignore" />
     <Content Include="js\isotope\css\style.css" />
     <Content Include="js\isotope\index.html" />
+    <Content Include="js\isotope\isotope.pkgd.js" />
     <Content Include="js\isotope\jquery.isotope.js" />
     <Content Include="js\isotope\jquery.isotope.min.js" />
     <Content Include="js\isotope\js\fake-element.js" />
@@ -88,6 +89,7 @@
     <Content Include="js\isotope\js\jquery.ba-bbq.min.js" />
     <Content Include="js\isotope\js\jquery.infinitescroll.min.js" />
     <Content Include="js\isotope\js\make-big-graph-projects.js" />
+    <Content Include="js\isotope\masonryHorizontal.js" />
     <Content Include="js\isotope\_includes\add-buttons.js" />
     <Content Include="js\isotope\_includes\change-sizes.js" />
     <Content Include="js\isotope\_includes\developer-buy-button.html" />

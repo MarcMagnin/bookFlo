@@ -28,24 +28,23 @@
 }
 
 .tilesContainer {
-  padding-left:150px;
-    padding-bottom:150px;
-    height: -moz-calc(100% - 250px);
-    height: -webkit-calc(100% - 250px);
-    height: -o-calc(100% - 250px);
-    height: calc(100% - 250px);
+    padding-left:150px;
+    height: -moz-calc(100% - 50px) !important; 
+    height: -webkit-calc(100% - 50px)!important; 
+    height: -o-calc(100% - 50px)!important; 
+    height: calc(100% - 50px)!important; 
     
-    /*white-space: nowrap;*/
-    width: -moz-calc(100% - 150px) !important;
-    width: -webkit-calc(100% - 150px) !important;
-    width: -o-calc(100% - 150px) !important;
-    width: calc(100% - 150px) !important;
 
+    /*white-space: nowrap;*/
+    width: -moz-calc(100% - 150px) !important; 
+    width: -webkit-calc(100% - 150px)!important; 
+    width: -o-calc(100% - 150px)!important; 
+    width: calc(100% - 150px)!important; 
 	overflow-y: hidden !important;
 	overflow-x: scroll !important;
 	-webkit-overflow-scrolling: touch;
 
-      
+        
     scrollbar-base-color : transparent;  
     scrollbar-track-color : transparent;
     scrollbar-highlight-color : transparent;
@@ -53,6 +52,11 @@
     scrollbar-face-color : rgba(3, 255, 8, 0.17);  
 }
 
+.tilesContainer:after {
+  content: '';
+  display: block;
+  clear: both;
+}
 
 /*http://css-tricks.com/arranging-elements-top-bottom-instead-left-right-float/*/
 
@@ -71,8 +75,9 @@ p {
     max-height : 250px;
         
 }
-
 .tile {
+
+    float: left;
     cursor: pointer;
     display: flex;
     align-items: flex-start;
@@ -124,7 +129,10 @@ p {
     flex-direction:row;
 }
 .tileHeroImage {
+    max-width:400px;
+    max-height:400px;
     padding-right:30px;
+    
 }
 .vertical-text {
     position:absolute;
@@ -144,6 +152,7 @@ p {
 
 	/*background: rgba(0, 0, 0, 0.75);*/
 	color: rgba(0, 0, 0, 0.60);
+    white-space:nowrap;
 	padding-left: 10px;
 	/*text-transform: uppercase;*/
 }
