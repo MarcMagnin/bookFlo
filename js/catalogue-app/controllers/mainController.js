@@ -215,7 +215,9 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
     // ajout d'un nouvel d'illustrateur
     $scope.addItem = function (callback) {
         var item = new Item;
-        item.Title= "";
+        item.Title = "";
+        item.Width = "1";
+        item.Height = "1";
         item.Modified = new Date().toISOString();
         $http({
             method: 'PUT',

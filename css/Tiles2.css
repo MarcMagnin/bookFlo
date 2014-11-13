@@ -9,6 +9,22 @@
     display :inline-block;
     vertical-align:middle;
 }
+
+.width1 {
+    width:200px;
+}
+.width2 {
+    width:450px;
+}
+.height1 {
+    height:150px;
+}
+.height2 {
+    height:200px;
+}
+.height3 {
+    height:450px;
+}
 .drop-box.dragover {
     background: rgba(100, 255, 100, 0.50);
 }
@@ -85,8 +101,7 @@ p {
     background:rgb(255, 255, 255);
     padding: 10px 0 10px 10px;
 
-    margin-right: 3px;
-    margin-top: 3px; 
+    margin-right: 10px;
     
    
      
@@ -129,7 +144,6 @@ p {
     flex-direction:row;
 }
 .tileHeroImage {
-    max-width:400px;
     max-height:400px;
     padding-right:30px;
     

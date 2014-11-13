@@ -63,7 +63,7 @@ html, body { height: 100%;
         <div class="tile tag1" ng-repeat="item in items" isotopethis>
             <div class="tileLeftPart">
                 <div class="vignette">
-                    <img class="tileHeroImage" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
+                    <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
                     <div class="vertical-text">{{item.Title}}</div>
                 </div>
 
