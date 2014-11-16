@@ -1,8 +1,6 @@
 var app = angular.module('BookFlo', ['angularFileUpload']);
-
 var prev;
-
-app.directive('tags', function ($http) {
+app.directive('tags', function ($http, $rootScope) {
     return {
         restrict: 'E',
         scope: { item: '='},
@@ -34,7 +32,7 @@ app.directive('tags', function ($http) {
             $scope.loading = false;
             $scope.getTags = function (value) {
                 $scope.loading = true;
-                return $http.get('http://localhost:8081/databases/BookFlo/indexes/Tags', {
+                return $http.get($rootScope.apiRootUrl + '/indexes/Tags', {
                     params: {
                         query: "Name:" + value + "*",
                         pageSize: 10
@@ -61,7 +59,7 @@ app.directive('tags', function ($http) {
                 $http({
                     method: 'PUT',
                     headers: { 'Raven-Entity-Name': 'Item' },
-                    url: 'http://localhost:8081/databases/BookFlo/docs/' + $scope.item['@metadata']['@id'],
+                    url: $rootScope.apiRootUrl + '/docs/' + $scope.item['@metadata']['@id'],
                     data: angular.toJson($scope.item)
                 }).
                     success(function (data, status, headers, config) {
@@ -137,9 +135,9 @@ app.directive('isotopethis', function () {
                 var tileTextArea = $this.find(".tileTextArea");
                 //$this.find("img").toggleClass("smallHeightImage");
                 var image = $this.find("img");
-                if (image.height() > 280) {
+                if (image.height() > 380) {
                     image.attr('prevHeight', image.height());
-                    $this.find("img").animate({ "height": "280px" }, 300, 'easeOutCubic');
+                    $this.find("img").animate({ "height": "380px" }, 300, 'easeOutCubic');
                 }
 
                 tileTextArea.css({

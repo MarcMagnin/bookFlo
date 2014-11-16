@@ -170,6 +170,7 @@
     <Content Include="js\isotope\_posts\docs\2011-06-16-hash-history-jquery-bbq.mdown" />
     <Content Include="js\isotope\_posts\docs\2011-12-11-help.mdown" />
     <Content Include="js\isotope\_posts\docs\2011-12-20-license.mdown" />
+    <Content Include="js\angular.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

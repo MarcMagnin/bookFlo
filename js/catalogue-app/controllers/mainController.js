@@ -28,16 +28,16 @@ var Update = function () {
 };
 
 
-app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', function ($scope, $http, $timeout, $upload) {
-    $scope.apiRootUrl = "http://localhost:8081/databases/BookFlo";
+app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '$upload', function ($scope,$rootScope, $http, $timeout, $upload) {
+   
     $scope.searchWord = "";
-
+    $rootScope.apiRootUrl = "http://82.226.165.21:8081/databases/BookFlo";
     $scope.items = [];
 
 
-    //$http({ method: 'GET', url: $scope.apiRootUrl + 'indexes/dynamic/Illustrateur?include=Illustrations.,Id&pageSize=30&noCache=101515793' }).
+    //$http({ method: 'GET', url: $rootScope.apiRootUrl + 'indexes/dynamic/Illustrateur?include=Illustrations.,Id&pageSize=30&noCache=101515793' }).
     $scope.init = function () {
-        $http({ method: 'GET', url: $scope.apiRootUrl + '/indexes/Items?pageSize=30&sort=-LastModified&noCache=1015157938' }).
+        $http({ method: 'GET', url: $rootScope.apiRootUrl + '/indexes/Items?pageSize=30&sort=-LastModified&noCache=1015157938' }).
             success(function (data, status, headers, config) {
                 angular.forEach(data.Results, function (item, index) {
                     item.editing = false;
@@ -51,13 +51,14 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
 
             }).
             error(function (data, status, headers, config) {
+                console.log(data);
             });
     };
 
 
 
     $scope.search = function () {
-        $http({ method: 'GET', url: $scope.apiRootUrl + '/indexes/dynamic/Illustrateur?&query=Nom:' + $scope.searchWord + '* OR  Prenom:' + $scope.searchWord + '* OR  Tags:' + $scope.searchWord + '* OR  Illustrations,Tags:' + $scope.searchWord + '*&pageSize=30&noCache=101515793' }).
+        $http({ method: 'GET', url: $rootScope.apiRootUrl + '/indexes/dynamic/Illustrateur?&query=Nom:' + $scope.searchWord + '* OR  Prenom:' + $scope.searchWord + '* OR  Tags:' + $scope.searchWord + '* OR  Illustrations,Tags:' + $scope.searchWord + '*&pageSize=30&noCache=101515793' }).
         success(function (data, status, headers, config) {
             $scope.illustrateurs.splice(0);
             angular.forEach(data.Results, function (illustrateur, index) {
@@ -114,7 +115,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
         $http({
             method: 'PUT',
             headers: { 'Raven-Entity-Name': 'Item' },
-            url: $scope.apiRootUrl + '/docs/' + item.Id,
+            url: $rootScope.apiRootUrl + '/docs/' + item.Id,
             data: angular.toJson(item)
         }).
         success(function (data, status, headers, config) {
@@ -137,7 +138,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
         $http({
             method: 'PUT',
             headers: { 'Raven-Entity-Name': 'Item' },
-            url: $scope.apiRootUrl + '/docs/' + item.Id,
+            url: $rootScope.apiRootUrl + '/docs/' + item.Id,
             data: angular.toJson(item)
         }).
             success(function (data, status, headers, config) {
@@ -158,7 +159,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
         $http({
             method: 'PUT',
             headers: { 'Raven-Entity-Name': 'Item' },
-            url: $scope.apiRootUrl + '/docs/'+item.Id,
+            url: $rootScope.apiRootUrl + '/docs/'+item.Id,
             data: angular.toJson(item)
         }).
             success(function (data, status, headers, config) {
@@ -173,7 +174,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
         $http({
             method: 'PUT',
             headers: { 'Raven-Entity-Name': 'Item' },
-            url: $scope.apiRootUrl + '/docs/' + item.Id,
+            url: $rootScope.apiRootUrl + '/docs/' + item.Id,
             data: angular.toJson(item)
         }).
         success(function (data, status, headers, config) {
@@ -190,7 +191,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
         
         $http({
             method: 'DELETE',
-            url: $scope.apiRootUrl +'/'+ item.Images[0].Url
+            url: $rootScope.apiRootUrl +'/'+ item.Images[0].Url
         }).
           success(function (data, status, headers, config) {
           }).
@@ -200,8 +201,8 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
 
         $http({
             method: 'DELETE',
-            headers: { 'Raven-Entity-Name': 'Item' },
-            url: $scope.apiRootUrl + '/docs/' + item.Id,
+           headers: { 'Raven-Entity-Name': 'Item' },
+            url: $rootScope.apiRootUrl + '/docs/' + item.Id,
         }).
           success(function (data, status, headers, config) {
               $scope.items.splice($index, 1);
@@ -222,7 +223,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
         $http({
             method: 'PUT',
             headers: { 'Raven-Entity-Name': 'Item' },
-            url: $scope.apiRootUrl + '/docs/Item%2F',
+            url: $rootScope.apiRootUrl + '/docs/Item%2F',
             data: angular.toJson(item)
         }).
             success(function (data, status, headers, config) {
@@ -231,7 +232,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
                 callback(item);
             }).
             error(function (data, status, headers, config) {
-
+                console.log(data);
             });
     };
 
@@ -319,7 +320,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
     $scope.startUpload = function (index) {
         $scope.progress[index] = 0;
         $scope.addItem(function (item, $index) {
-            $scope.url = $scope.apiRootUrl + '/static/' + item.Id + '/' + $scope.selectedFiles[index].name;
+            $scope.url = $rootScope.apiRootUrl + '/static/' + item.Id + '/' + $scope.selectedFiles[index].name;
 
 
             var fileReader = new FileReader();
@@ -376,7 +377,7 @@ app.controller("mainController", ['$scope', '$http', '$timeout', '$upload', func
         $http({
             method: 'PATCH',
             headers: { 'Raven-Entity-Name': 'Item' },
-            url: $scope.apiRootUrl + '/docs/' + item.Id,
+            url: $rootScope.apiRootUrl + '/docs/' + item.Id,
             data: angular.toJson(new Array(update, update2))
         }).
             success(function (data, status, headers, config) {

@@ -1,4 +1,4 @@
-﻿app.controller("tileDetailController", ['$scope', '$http', '$timeout', '$upload', function ($scope, $http, $timeout, $upload) {
+﻿app.controller("tileDetailController", ['$scope', '$rootScope', '$http', '$timeout', '$upload', function ($scope, $rootScope, $http, $timeout, $upload) {
 
     var deleteImage = function (url) {
         // delete prev image if overridden
@@ -73,7 +73,7 @@
 
     $scope.startUpload = function (index, item, detailItem) {
         $scope.progress[index] = 0;
-         url = $scope.$parent.apiRootUrl + '/static/' + item.Id + '/details/' + $scope.selectedFiles[index].name;
+        url = $rootScope.apiRootUrl + '/static/' + item.Id + '/details/' + $scope.selectedFiles[index].name;
 
 
             var fileReader = new FileReader();

@@ -142,6 +142,7 @@ p {
 .vignette {
     display: flex;
     flex-direction:row;
+    align-items:flex-start;
 }
 .tileHeroImage {
     max-height:400px;
