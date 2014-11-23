@@ -1,12 +1,9 @@
-var app = angular.module('BookFlo', ['angularFileUpload']);
+﻿var app = angular.module('BookFlo', ['angularFileUpload']);
 var prev;
-
-var $container = $('.tilesContainer');
-
 app.directive('tags', function ($http, $rootScope) {
     return {
         restrict: 'E',
-        scope: { item: '='},
+        scope: { item: '=' },
         template:
             '<div class="tags">' +
                 '<a ng-repeat="(idx, tag) in item.Tags" class="tag" ng-click="remove(idx)">{{tag}}</a>' +
@@ -84,17 +81,16 @@ app.directive('tags', function ($http, $rootScope) {
     };
 });
 
-
+var $container = $('.tilesContainer');
 app.directive('isotopethis', function () {
     return {
         link: function (scope, elm) {
-            
-            $container.isotope('insert', elm);
-            
+
+            $container.isotope('appended', elm);
             setTimeout(function () {
                 $container.isotope('reLayout');
             }, 200);
-            
+
 
             elm.find("a").click(function () {
                 var selector = $(this).attr('data-filter');
@@ -109,11 +105,13 @@ app.directive('isotopethis', function () {
                 var $this = $(this);
                 //$container.isotope('layout');
                 // filters
-              
+
                 if (prev) {
                     //prev.find(".tileTextArea").slideToggle(0);
                     //$container.isotope('reLayout');
-                    
+                    if (prev.is($this)) {
+                        return;
+                    } else {
                         prev.find(".tileTextArea").slideToggle(0);
                         prev.find(".tileLeftPartDetails").css(
                         {
@@ -124,13 +122,9 @@ app.directive('isotopethis', function () {
                             image.animate({ "height": image.attr('prevHeight') + "px" }, 300, 'easeOutCubic');
                         }
                         // prev.find("img").animate({ "height": "100%" }, 300, 'easeOutCubic');
-                    //prev.find("img").toggleClass("smallHeightImage");
-                        if (prev.is($this)) {
-                            $container.isotope('reLayout');
-                            return;
-                        }
+                        //prev.find("img").toggleClass("smallHeightImage");
+                    }
                 }
-               
 
                 $this.find(".tileLeftPartDetails").css(
                     {

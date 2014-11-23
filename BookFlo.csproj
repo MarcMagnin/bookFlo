@@ -75,6 +75,7 @@
     <Content Include="js\angular.min.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\catalogue-app\app.js" />
+    <Content Include="js\catalogue-app\appAdmin.js" />
     <Content Include="js\catalogue-app\controllers\mainController.js" />
     <Content Include="js\catalogue-app\controllers\tileDetailController.js" />
     <Content Include="js\FileAPI.js" />

@@ -559,17 +559,17 @@
 
               return $atoms;
           }
-         
-          if ( filter !== '*' ) {
-            $atomsToShow = $hiddenAtoms.filter( filter );
-            var $atomsToHide = $atoms.not( hiddenSelector ).not( filter ).addClass( hiddenClass );
-            this.styleQueue.push({ $el: $atomsToHide, style: this.options.hiddenStyle });
+
+          if (filter !== '*') {
+              $atomsToShow = $hiddenAtoms.filter(filter);
+              var $atomsToHide = $atoms.not(hiddenSelector).not(filter).addClass(hiddenClass);
+              this.styleQueue.push({ $el: $atomsToHide, style: this.options.hiddenStyle });
           }
 
           this.styleQueue.push({ $el: $atomsToShow, style: this.options.visibleStyle });
-          $atomsToShow.removeClass( hiddenClass );
+          $atomsToShow.removeClass(hiddenClass);
 
-          return $atoms.filter( filter );
+          return $atoms.filter(filter);
       }
     },
     
@@ -606,20 +606,23 @@
       var instance = this,
           getSortData = this.options.getSortData,
           $this, sortData;
-      $atoms.each(function(){
+      
+      $atoms.each(function () {
         $this = $(this);
         sortData = {};
+        
         // get value for sort data based on fn( $elem ) passed in
-        for ( var key in getSortData ) {
+        for (var key in getSortData) {
           if ( !isIncrementingElemCount && key === 'original-order' ) {
             // keep original order original
-            sortData[ key ] = $.data( this, 'isotope-sort-data' )[ key ];
+            sortData[ key ] = $.data(this, 'isotope-sort-data' )[ key ];
           } else {
-            sortData[ key ] = getSortData[ key ]( $this, instance );
+              sortData[key] = getSortData[key]($this, instance);
           }
         }
         // apply sort data to element
-        $.data( this, 'isotope-sort-data', sortData );
+        $.data(this, 'isotope-sort-data', sortData);
+        
       });
     },
 
@@ -629,21 +632,26 @@
       var sortBy = this.options.sortBy,
           getSorter = this._getSorter,
           sortDir = this.options.sortAscending ? 1 : -1,
-          sortFn = function( alpha, beta ) {
+          sortFn = function (alpha, beta) {
+              
             var a = getSorter( alpha, sortBy ),
                 b = getSorter( beta, sortBy );
             // fall back to original order if data matches
             if ( a === b && sortBy !== 'original-order') {
               a = getSorter( alpha, 'original-order' );
-              b = getSorter( beta, 'original-order' );
+              b = getSorter(beta, 'original-order');
+              
             }
             return ( ( a > b ) ? 1 : ( a < b ) ? -1 : 0 ) * sortDir;
           };
-
+      
       this.$filteredAtoms.sort( sortFn );
     },
 
-    _getSorter : function( elem, sortBy ) {
+    _getSorter: function (elem, sortBy) {
+        if (!$.data(elem, 'isotope-sort-data')) {
+            return 0;
+        }
       return $.data( elem, 'isotope-sort-data' )[ sortBy ];
     },
 

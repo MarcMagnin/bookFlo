@@ -12,7 +12,9 @@
         /* inherit height from window */
 html, body { height: 100%; 
              width:100%;
-             background:rgb(222, 222, 222);
+             background-color: rgb(128, 128, 128);
+             font-family: "aktiv-grotesk-std", "Helvetica Neue", "Helvetica", sans-serif;
+             color: rgb(255, 255, 255);
 }
 
 
@@ -22,82 +24,82 @@ html, body { height: 100%;
     <p class="footer">Designed by <a href="http://" target="_blank">Florie Briand</a> and Marc Magnin - 2014 </p>
 
     <div class="menu">
-        <p class="menuItem" id-menu=".menuCatalogue">catalogue</p>
-        <p class="menuItem" id-menu=".menuUnivers">univers</p>
-        <p class="menuItem" id-menu=".menuActu">actualités</p>
-        <p>professionnels</p>
+        <p class="menuItem" id-menu=".menuTheme">theme</p>
         <p>contacts</p>
     </div>
-    <div class="subMenu menuCatalogue">
-        <p>bla bla test</p>
-    </div>
-    <div class="subMenu menuUnivers">
-        <p>Hehe c'est cool ici non ?</p>
-    </div>
-    <div class="subMenu menuActu">
-        <div class="subSubMenu">
-            <img src="images/72_26519.jpg" />
-            <div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-
-                </p>
-            </div>
+    <div class="subMenu menuTheme">
+        <a ng-click="filter('*')">Tous</a>
+        <div class="tag1" ng-repeat="tag in tags">
+            <a ng-click="filter(tag.Name)">{{tag.Name}}</a>
         </div>
-
     </div>
-
-    <!--
-        <div class="filters">
-            <ul>
-                <li data-filter="*">Tous les livres</li>
-                <li data-filter=".tag1">monstres</li>
-                <li data-filter=".tag2">animaux</li>
-                <li data-filter=".tag3">poules</li>
-                <li><input id="filterInput" type="text" onkeypress="filterText(event)" /></li>
-
-            </ul>
-        </div>-->
-
-    <div id="booksContainer" class="tilesContainer">
-        <div class="tile tag1" ng-repeat="item in items" isotopethis>
-            <div class="tileLeftPart">
-                <div class="vignette">
-                    <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
-                    <div class="vertical-text">{{item.Title}}</div>
-                </div>
-
-                <div class="tileLeftPartDetails">
-                    <a ng-repeat="tag in item.Tags" class="tag">{{tag}}</a>
-                </div>
+            <div class="subMenu menuUnivers">
+                <p>Hehe c'est cool ici non ?</p>
             </div>
-            <div class="tileTextArea">
-                <div class="details" ng-repeat="detail in item.Details">
-                    <div ng-switch="detail.type">
-                        <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
-                        <p ng-switch-when="text">{{detail.value}}</p>
-                        <img ng-switch-when="image" src="{{detail.value}}" />
+            <div class="subMenu menuActu">
+                <div class="subSubMenu">
+                    <img src="images/72_26519.jpg" />
+                    <div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+
+                        </p>
                     </div>
                 </div>
+
             </div>
 
-        </div>
-    </div>
+            <!--
+                <div class="filters">
+                    <ul>
+                        <li data-filter="*">Tous les livres</li>
+                        <li data-filter=".tag1">monstres</li>
+                        <li data-filter=".tag2">animaux</li>
+                        <li data-filter=".tag3">poules</li>
+                        <li><input id="filterInput" type="text" onkeypress="filterText(event)" /></li>
 
-    <script src="js/jquery-1.9.1.js"></script>
-    <!--<script src="js/isotope/isotope.pkgd.js"></script>
-    <script src="js/isotope/masonryHorizontal.js"></script>-->
-    <script src="js/isotope/jquery.isotope.min.js"></script>
-    <!--contains easing animations as well -->
-    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="js/stuff.js"></script>
+                    </ul>
+                </div>-->
 
-    <script src="js/FileAPI.js"></script>
-    <script src="js/angular-file-upload-html5-shim.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script src="js/angular-file-upload.js"></script>
+            <div id="booksContainer" class="tilesContainer">
+                <div class="tile {{item.Title}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
+                    <div class="tileLeftPart">
+                        <div class="vignette">
+                            <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
+                            <div class="vertical-text">{{item.Title}}</div>
+                        </div>
 
-    <script type="text/javascript" src="js/catalogue-app/app.js"></script>
-    <script type="text/javascript" src="js/catalogue-app/controllers/mainController.js"></script>
-</body>
+                        <div class="tileLeftPartDetails">
+                            <a ng-repeat="tag in item.Tags" class="tag">{{tag}}</a>
+                        </div>
+                    </div>
+                    <div class="tileTextArea">
+                        <div class="details" ng-repeat="detail in item.Details">
+                            <div ng-switch="detail.type">
+                                <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
+                                <p ng-switch-when="text">{{detail.value}}</p>
+                                <img ng-switch-when="image" class="details-image" src="{{detail.value}}" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <script src="js/jquery-1.9.1.js"></script>
+            <!--<script src="js/isotope/isotope.pkgd.js"></script>
+            <script src="js/isotope/masonryHorizontal.js"></script>-->
+            <script src="js/isotope/jquery.isotope.js"></script>
+            <!--contains easing animations as well -->
+            <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+            <script src="js/stuff.js"></script>
+
+            <script src="js/FileAPI.js"></script>
+            <script src="js/angular-file-upload-html5-shim.js"></script>
+            <script type="text/javascript" src="js/angular.min.js"></script>
+            <script src="js/angular-file-upload.js"></script>
+
+            <script type="text/javascript" src="js/catalogue-app/app.js"></script>
+            <script type="text/javascript" src="js/catalogue-app/controllers/mainController.js"></script>
+            <script src="js/catalogue-app/controllers/tileDetailController.js"></script>
+        </body>
 </html>

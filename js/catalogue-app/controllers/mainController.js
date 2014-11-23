@@ -31,9 +31,10 @@ var Update = function () {
 app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '$upload', function ($scope,$rootScope, $http, $timeout, $upload) {
    
     $scope.searchWord = "";
-    $rootScope.apiRootUrl = "http://82.226.165.21:8081/databases/BookFlo";
+    //$rootScope.apiRootUrl = "http://82.226.165.21:8081/databases/BookFlo";
+    $rootScope.apiRootUrl = "http://localhost:8085/databases/BookFlo";
     $scope.items = [];
-
+    $scope.tags = [];
 
     //$http({ method: 'GET', url: $rootScope.apiRootUrl + 'indexes/dynamic/Illustrateur?include=Illustrations.,Id&pageSize=30&noCache=101515793' }).
     $scope.init = function () {
@@ -46,16 +47,38 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
                     }
                     item.Id = item['@metadata']['@id'];
                     $scope.items.push(item);
-
+                    
                 });
+                
 
             }).
             error(function (data, status, headers, config) {
                 console.log(data);
             });
+
+        // Load tags
+        $http({ method: 'GET', url: $rootScope.apiRootUrl + '/indexes/Tags?pageSize=30&sort=Name&noCache=1015157938' }).
+            success(function (data, status, headers, config) {
+                angular.forEach(data.Results, function (item, index) {
+                    $scope.tags.push(item);
+                });
+
+
+            }).
+            error(function (data, status, headers, config) {
+                console.log(data);
+            });
+
     };
 
-
+    $scope.filter = function (tag) {
+        if (tag == '*' || '') {
+            $container.isotope({ filter: '*', filterContains: null });
+        } else {
+            $container.isotope({ filterContains: tag });
+        }
+        return false;
+    }
 
     $scope.search = function () {
         $http({ method: 'GET', url: $rootScope.apiRootUrl + '/indexes/dynamic/Illustrateur?&query=Nom:' + $scope.searchWord + '* OR  Prenom:' + $scope.searchWord + '* OR  Tags:' + $scope.searchWord + '* OR  Illustrations,Tags:' + $scope.searchWord + '*&pageSize=30&noCache=101515793' }).

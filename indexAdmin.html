@@ -10,25 +10,15 @@
     <link href="css/Menu2.css" rel="stylesheet" />
     <link href="css/admin.css" rel="stylesheet" />
     <style>
-                html, body {
-                    height: 100%;
-                    width: 100%;
-                    margin: 0;
-                    overflow: hidden;
-                }
+                /* inherit height from window */
+html, body { height: 100%; 
+             width:100%;
+             background-color: rgb(128, 128, 128);
+}
                 /*body {
             width: 90%;
             padding-left: 4rem;
         }*/
-
-                body {
-                    background:rgb(227, 227, 227);
-                    background-image: url("docs site/Cousins-Karlsson-3.jpg");
-                    background-repeat: no-repeat;
-                    background-attachment: fixed;
-                    /*background-position:98% 98%;*/
-                    background-size: cover;
-                }
 
                 /*height : 300px;
           white-space: nowrap;
@@ -62,21 +52,7 @@
                     }
                 }
     </style>
-    <script src="js/jquery-1.9.1.js"></script>
     
-    <script src="js/isotope/jquery.isotope.min.js"></script>
-    <!--contains easing animations as well -->
-    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="js/stuff.js"></script>
-
-    <script src="js/FileAPI.js"></script>
-    <script src="js/angular-file-upload-html5-shim.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script src="js/angular-file-upload.js"></script>
-
-    <script type="text/javascript" src="js/catalogue-app/app.js"></script>
-	<script type="text/javascript" src="js/catalogue-app/controllers/mainController.js"></script>
-    <script src="js/catalogue-app/controllers/tileDetailController.js"></script>
 </head>
 <body class="drop-box" ng-app="BookFlo" ng-controller="mainController" ng-init="init()"
       ng-file-drop="onFileSelect($files)"
@@ -122,7 +98,6 @@
         </div>-->
 
     <div id="booksContainer" class="tilesContainer">
-
         <div class="tile tag1" ng-repeat="item in items" isotopethis>
             <a class="delete-cross"
                ng-click="deleteItem($index, item)">
@@ -142,11 +117,11 @@
                     Save
                 </a>
 
-            
+
             </div>
             <div class="tileLeftPart">
                 <div class="vignette">
-                    <img class="tileHeroImage width{{item.Width}}"  src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
+                    <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
                     <div class="tileLeftPartDetails">
                         <input ng-model="item.Title" />
                         <tags item="item"></tags>
@@ -155,7 +130,7 @@
 
                     </div>
                 </div>
-               
+
             </div>
             <div class="tileTextArea">
                 <div class="details" ng-repeat="detail in item.Details" ng-controller="tileDetailController">
@@ -165,7 +140,7 @@
                     </a>
                     <div ng-switch="detail.type">
                         <textarea ng-switch-when="title" class="tile-header admin-tile-header" ng-model="detail.value"></textarea>
-                        <textarea ng-switch-when="text" ng-model="detail.value" ></textarea>
+                        <textarea ng-switch-when="text" ng-model="detail.value"></textarea>
                         <img ng-switch-when="image" class="drop-box drop-image"
                              ng-file-drop="onAddImage($files, item, detail)"
                              ng-file-drop-available="true"
@@ -176,6 +151,24 @@
 
         </div>
     </div>
+
+
+    <script src="js/jquery-1.9.1.js"></script>
+    <!--<script src="js/isotope/isotope.pkgd.js"></script>
+    <script src="js/isotope/masonryHorizontal.js"></script>-->
+    <script src="js/isotope/jquery.isotope.min.js"></script>
+    <!--contains easing animations as well -->
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/stuff.js"></script>
+
+    <script src="js/FileAPI.js"></script>
+    <script src="js/angular-file-upload-html5-shim.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script src="js/angular-file-upload.js"></script>
+
+    <script type="text/javascript" src="js/catalogue-app/appAdmin.js"></script>
+    <script type="text/javascript" src="js/catalogue-app/controllers/mainController.js"></script>
+    <script src="js/catalogue-app/controllers/tileDetailController.js"></script>
 
 </body>
 </html>
