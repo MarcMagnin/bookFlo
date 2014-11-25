@@ -114,11 +114,7 @@ app.directive('isotopethis', function () {
                     //prev.find(".tileTextArea").slideToggle(0);
                     //$container.isotope('reLayout');
                     
-                        prev.find(".tileTextArea").slideToggle(0);
-                        prev.find(".tileLeftPartDetails").css(
-                        {
-                            "display": "none",
-                        });
+                        prev.find(".details").slideToggle(200);
                         var image = prev.find("img");
                         if (image.attr('prevHeight')) {
                             image.animate({ "height": image.attr('prevHeight') + "px" }, 300, 'easeOutCubic');
@@ -127,34 +123,29 @@ app.directive('isotopethis', function () {
                     //prev.find("img").toggleClass("smallHeightImage");
                         if (prev.is($this)) {
                             $container.isotope('reLayout');
+                            prev = null;
                             return;
                         }
+                        
                 }
                
 
-                $this.find(".tileLeftPartDetails").css(
-                    {
-                        "display": "ms-flexbox",
-                        "display": "flex",
-                    });
-                var tileTextArea = $this.find(".tileTextArea");
+                var details = $this.find(".details");
+                            
                 //$this.find("img").toggleClass("smallHeightImage");
                 var image = $this.find("img");
                 if (image.height() > 380) {
                     image.attr('prevHeight', image.height());
                     $this.find("img").animate({ "height": "380px" }, 300, 'easeOutCubic');
                 }
-
-                tileTextArea.css({
+                $this.css({
                     "max-height": $('#booksContainer').height() + "px",
-                    "display": "inline-block",
-                    //"display": "flex",
                 });
                 $container.isotope('reLayout');
-                tileTextArea.hide(0);
-                tileTextArea.show(300, function () {
+                details.slideToggle(200).after(function () {
                     $container.isotope('reLayout');
                 });
+                details.animate({ width: '500px' }, 200, 'easeOutQuint');
                 //    .after(function () {
                 //        $container.isotope('reLayout');
                 //        setTimeout(function () {

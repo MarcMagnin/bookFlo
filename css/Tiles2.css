@@ -115,7 +115,15 @@ p {
     
     
 }
+.details {
+    display:none;
+    -webkit-flex-direction: column;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   overflow:auto;
 
+       
+}
 
 .univers2 {
     background: rgba(40, 226, 40, 0.3);

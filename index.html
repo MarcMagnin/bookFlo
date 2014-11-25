@@ -63,25 +63,24 @@ html, body { height: 100%;
 
             <div id="booksContainer" class="tilesContainer">
                 <div class="tile {{item.Title}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
-                    <div class="tileLeftPart">
-                        <div class="vignette">
-                            <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
-                            <div class="vertical-text">{{item.Title}}</div>
-                        </div>
+    
+                    <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
+                    <div class="vertical-text">{{item.Title}}</div>
+                  
 
-                        <div class="tileLeftPartDetails">
+                        <!--<div class="tileLeftPartDetails">
                             <a ng-repeat="tag in item.Tags" class="tag">{{tag}}</a>
+                        </div>-->
+                 
+                    
+                    <div class="details" ng-repeat="detail in item.Details">
+                        <div ng-switch="detail.type">
+                            <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
+                            <p ng-switch-when="text">{{detail.value}}</p>
+                            <img ng-switch-when="image" class="details-image" src="{{detail.value}}" />
                         </div>
                     </div>
-                    <div class="tileTextArea">
-                        <div class="details" ng-repeat="detail in item.Details">
-                            <div ng-switch="detail.type">
-                                <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
-                                <p ng-switch-when="text">{{detail.value}}</p>
-                                <img ng-switch-when="image" class="details-image" src="{{detail.value}}" />
-                            </div>
-                        </div>
-                    </div>
+                   
 
                 </div>
             </div>
