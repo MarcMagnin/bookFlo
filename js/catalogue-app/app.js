@@ -116,6 +116,7 @@ app.directive('isotopethis', function () {
                     
                         prev.find(".details").slideToggle(200);
                         var image = prev.find("img");
+                        image.addClass(image.attr('prevWidthClass'));
                         if (image.attr('prevHeight')) {
                             image.animate({ "height": image.attr('prevHeight') + "px" }, 300, 'easeOutCubic');
                         }
@@ -130,22 +131,38 @@ app.directive('isotopethis', function () {
                 }
                
 
-                var details = $this.find(".details");
-                            
+          
                 //$this.find("img").toggleClass("smallHeightImage");
+                
+                //if (image.height() > 380) {
+                //    image.attr('prevHeight', image.height());
+                //    $this.find("img").animate({ "height": "380px" }, 300, 'easeOutCubic');
+                //}
                 var image = $this.find("img");
-                if (image.height() > 380) {
-                    image.attr('prevHeight', image.height());
-                    $this.find("img").animate({ "height": "380px" }, 300, 'easeOutCubic');
-                }
+                image.removeClass(function (index, css) {
+                    var elem = $(this);
+                    $(css.split(' ')).each(function () {
+                        var c = this.trim();
+                        if (this.indexOf("width") == 0) {
+                            image.attr('prevWidthClass', c);
+                            elem.removeClass(c);
+                        }
+                    });
+                });
+                //var image = $this.find("img"); ("div:regex(class, .*sd.*)")
+                //image.attr('prevWidth', image.width());
+                // image.animate({ "width": "auto" }, 300, 'easeOutCubic');
+
                 $this.css({
-                    "max-height": $('#booksContainer').height() + "px",
+                    "max-height": $('#booksContainer').height()-50 + "px",
                 });
                 $container.isotope('reLayout');
-                details.slideToggle(200).after(function () {
-                    $container.isotope('reLayout');
-                });
-                details.animate({ width: '500px' }, 200, 'easeOutQuint');
+                var details = $this.find(".details");
+                details.slideToggle(200);
+                setTimeout(function () {
+                             $container.isotope('reLayout');
+                  },200);
+                //details.animate({ width: '500px' }, 200, 'easeOutQuint');
                 //    .after(function () {
                 //        $container.isotope('reLayout');
                 //        setTimeout(function () {

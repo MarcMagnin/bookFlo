@@ -10,6 +10,9 @@
     vertical-align:middle;
 }
 
+.tileSelected{
+    width:auto;
+}
 .width1 {
     width:200px;
 }
@@ -100,7 +103,7 @@ p {
     cursor: pointer;
     background:rgba(40, 40, 40, 0.40);
     padding: 10px 0 10px 10px;
-
+    overflow-y:auto;
     margin-right: 10px;
     margin-top: 5px;
     
@@ -163,9 +166,13 @@ p {
     padding-right:30px;
     
 }
+.innerTile{
+    
+}
 .vertical-text {
     position:absolute;
-    
+    top:0;
+    right:0;
     font-size:1.6em;  
     
     overflow:hidden;
@@ -174,14 +181,15 @@ p {
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
 
-	-ms-transform-origin: left top 0;
-	-moz-transform-origin: left top 0;
-	-webkit-transform-origin: left top 0;
-	transform-origin: left top 0;
+	-ms-transform-origin: 50% 100%;
+	-moz-transform-origin: 50% 100%;
+	-webkit-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
 
 	/*background: rgba(0, 0, 0, 0.75);*/
     white-space:nowrap;
 	padding-left: 10px;
+    padding-bottom: 7px;
 	/*text-transform: uppercase;*/
 }
 .tileLeftPartDetails {
