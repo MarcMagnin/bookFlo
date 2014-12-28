@@ -16,8 +16,7 @@
     user-select: none;
     cursor: pointer;
     
-     color: white;
-    color: rgba(255,255,255,1);
+     color: black;
     /* fallback */
     background-color: #000000;
     background-color: rgba(0,0,0,0.5);

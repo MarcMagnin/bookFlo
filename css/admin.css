@@ -1,10 +1,20 @@
-﻿
-.tags {
-    display:flex;
-    -webkit-flex-direction: column;
-   -ms-flex-direction: column;
-   flex-direction: column;
+﻿.tile-admin {
+    min-width:450px
 }
+
+.tags {
+      display :inline-block;
+}
+.input-tile-size {
+    width:40px !important;
+    display :inline-block !important;
+}
+.form-control-custom {
+    width:90% !important;
+    padding:15px !important;
+    margin-left:15px !important;
+}
+
 .tag {
     margin: 10px 0;
     border-radius: 6px;
@@ -21,13 +31,9 @@
     text-decoration: none;
 }
 
-
-textarea {
+.textarea {
     width:100%;
     height: 150px;
-}
-.details {
-    position:relative;
 }
 .admin-tile-header {
     height:auto;
@@ -40,10 +46,15 @@ textarea {
     max-height:200px;
 }
 .delete-cross {
-    background : white;
-    color:red;
     position:absolute;
-    top:0px;
+    right:5px;
+}
+
+.delete-cross2 {
+    position:absolute;
     right:0px;
-    padding:5px;
+}
+.tileMenu {
+    /*display :inline-block;*/
+
 }

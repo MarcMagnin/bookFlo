@@ -21,13 +21,14 @@ else {
     $window = $(window);
     $(function () {
         $('body, html').bind('mousewheel', function (event, delta, deltaX, deltaY) {
-
-            var isHorizontalMode = $window.width() > 500;
-            if (isHorizontalMode)
-                $('#booksContainer').stop().animate({ scrollLeft: '-=' + (500 * delta) + 'px' }, 400, 'easeOutQuint');
-            else
-                $('#booksContainer').stop().animate({ scrollTop: '-=' + (500 * delta) + 'px' }, 400, 'easeOutQuint');
-            event.preventDefault();
+            $('#booksContainer').stop().animate({ scrollLeft: '-=' + (500 * deltaX) + 'px' }, 400, 'easeOutQuint');
+            $('#booksContainer').stop().animate({ scrollLeft: '-=' + (500 * deltaY) + 'px' }, 400, 'easeOutQuint');
+            //var isHorizontalMode = $window.width() > 500;
+            //if (isHorizontalMode)
+            //    $('#booksContainer').stop().animate({ scrollLeft: '-=' + (500 * delta) + 'px' }, 400, 'easeOutQuint');
+            //else
+            //    $('#booksContainer').stop().animate({ scrollTop: '-=' + (500 * delta) + 'px' }, 400, 'easeOutQuint');
+            //event.preventDefault();
         });
     });
 };
@@ -87,10 +88,26 @@ $(document).ready(function () {
     });
 
     var previous;
+
+
+
     $('.menuItem').click('click', function () {
         var $this = $(this);
         var test = $this.attr('id-menu');
         var menu = $(test);
+        if (previous && previous.is(menu) && previous.css("display")== "block") {
+            menu.slideUp(200);
+            previous = null;
+            return;
+        }
+        if (previous && !previous.is(menu)) {
+            previous.slideUp(200);
+        }
+        menu.slideDown(200);
+        previous = menu;
+    });
+    $('.subMenu').click('click', function () {
+        var menu = $(this);
         if (previous && previous.is(menu)) {
             menu.slideUp(200);
             previous = null;

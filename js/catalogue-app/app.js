@@ -6,10 +6,10 @@ var $container = $('.tilesContainer');
 app.directive('tags', function ($http, $rootScope) {
     return {
         restrict: 'E',
-        scope: { item: '='},
+        scope: { item: '=' },
         template:
             '<div class="tags">' +
-                '<a ng-repeat="(idx, tag) in item.Tags" class="tag" ng-click="remove(idx)">{{tag}}</a>' +
+                '<button class="btn btn-lg btn-info tag" ng-repeat="(idx, tag) in item.Tags" ng-click="remove(idx)">{{tag}}</button>' +
             '</div>' +
              '<input type="text" ' +
                 'ng-model="new_value"  ' +
@@ -88,13 +88,24 @@ app.directive('tags', function ($http, $rootScope) {
 app.directive('isotopethis', function () {
     return {
         link: function (scope, elm) {
-            
+
             $container.isotope('insert', elm);
-            
+
             setTimeout(function () {
                 $container.isotope('reLayout');
             }, 200);
-            
+
+
+            // handle the mousewheel on tiles
+            elm.bind('mousewheel', function (event, delta, deltaX, deltaY) {
+                var openTile = elm.find(".inner-tile-open");
+                if (openTile.length > 0 && openTile.height()>600) {
+                    openTile.stop().animate({ scrollTop: '-=' + (500 * deltaX) + 'px' }, 400, 'easeOutQuint');
+                    openTile.stop().animate({ scrollTop: '-=' + (500 * deltaY) + 'px' }, 400, 'easeOutQuint');
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+            });
 
             elm.find("a").click(function () {
                 var selector = $(this).attr('data-filter');
@@ -105,35 +116,47 @@ app.directive('isotopethis', function () {
             });
 
             //// TILE CLICK
-            elm.click(function () {
-                var $this = $(this);
+            elm.find(".tileHeroImage").click(function () {
+                var $this = $(this).parent().parent();
                 //$container.isotope('layout');
                 // filters
-              
+
+                // close the menu if open
+                $('.subMenu').slideUp(200);
+
+
                 if (prev) {
                     //prev.find(".tileTextArea").slideToggle(0);
                     //$container.isotope('reLayout');
-                    
-                        prev.find(".details").slideToggle(200);
-                        var image = prev.find("img");
-                        image.addClass(image.attr('prevWidthClass'));
-                        if (image.attr('prevHeight')) {
-                            image.animate({ "height": image.attr('prevHeight') + "px" }, 300, 'easeOutCubic');
-                        }
-                        // prev.find("img").animate({ "height": "100%" }, 300, 'easeOutCubic');
-                    //prev.find("img").toggleClass("smallHeightImage");
-                        if (prev.is($this)) {
-                            $container.isotope('reLayout');
-                            prev = null;
-                            return;
-                        }
-                        
-                }
-               
 
-          
+                    prev.find(".details").slideToggle(200);
+                    var inner = prev.find(".inner-tile-open")
+                    inner.toggleClass("inner-tile");
+                    inner.toggleClass("inner-tile-open");
+
+                    var vertText = prev.find(".vertical-text-open");
+                    vertText.toggleClass("vertical-text");
+                    vertText.toggleClass("vertical-text-open");
+
+                    var image = prev.find("img");
+                    image.addClass(image.attr('prevWidthClass'));
+                    if (image.attr('prevHeight')) {
+                        image.animate({ "height": image.attr('prevHeight') + "px" }, 300, 'easeOutCubic');
+                    }
+                    // prev.find("img").animate({ "height": "100%" }, 300, 'easeOutCubic');
+                    //prev.find("img").toggleClass("smallHeightImage");
+                    if (prev.is($this)) {
+                        $container.isotope('reLayout');
+                        prev = null;
+                        return;
+                    }
+
+                }
+
+
+
                 //$this.find("img").toggleClass("smallHeightImage");
-                
+
                 //if (image.height() > 380) {
                 //    image.attr('prevHeight', image.height());
                 //    $this.find("img").animate({ "height": "380px" }, 300, 'easeOutCubic');
@@ -152,16 +175,25 @@ app.directive('isotopethis', function () {
                 //var image = $this.find("img"); ("div:regex(class, .*sd.*)")
                 //image.attr('prevWidth', image.width());
                 // image.animate({ "width": "auto" }, 300, 'easeOutCubic');
+                var inner = $this.find(".inner-tile");
+                inner.toggleClass("inner-tile");
+                inner.toggleClass("inner-tile-open");
 
-                $this.css({
-                    "max-height": $('#booksContainer').height()-50 + "px",
+
+                var vertText = $this.find(".vertical-text");
+                vertText.toggleClass("vertical-text");
+                vertText.toggleClass("vertical-text-open");
+
+                
+                inner.css({
+                    "max-height": $('#booksContainer').height() - 50 + "px",
                 });
                 $container.isotope('reLayout');
                 var details = $this.find(".details");
                 details.slideToggle(200);
                 setTimeout(function () {
-                             $container.isotope('reLayout');
-                  },200);
+                    $container.isotope('reLayout');
+                }, 200);
                 //details.animate({ width: '500px' }, 200, 'easeOutQuint');
                 //    .after(function () {
                 //        $container.isotope('reLayout');

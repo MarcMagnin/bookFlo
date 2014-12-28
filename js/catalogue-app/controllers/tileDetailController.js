@@ -13,13 +13,24 @@
           });
         }
     }
+    $scope.clearDescription= function (item) {
+        item.Description = null;
+        $scope.saveItem(item);
+    }
+    $scope.clearTitle = function (item) {
+        item.Title= null;
+        $scope.saveItem(item);
+    }
+
     $scope.deleteDetail = function ($index, item) {
-        if (item.Details[$index].type == "image") {
+        if (item.Details[$index].type && item.Details[$index].type == "image") {
             // remove the image
             deleteImage(item.Details[$index].value);
         }
+        
         item.Details.splice($index, 1);
         $scope.saveItem(item);
+        
     }
 
     $scope.onDeleteImage =function(item, detailItem){

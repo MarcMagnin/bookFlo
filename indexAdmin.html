@@ -9,6 +9,7 @@
     <link href="css/Tiles2.css" rel="stylesheet" />
     <link href="css/Menu2.css" rel="stylesheet" />
     <link href="css/admin.css" rel="stylesheet" />
+    <link href="bootstrap-3.3.1-dist/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
                 /* inherit height from window */
 html, body { height: 100%; 
@@ -97,61 +98,95 @@ html, body { height: 100%;
             </ul>
         </div>-->
 
-    <div id="booksContainer" class="tilesContainer">
-        <div class="tile tag1" ng-repeat="item in items" isotopethis>
-            <a class="delete-cross"
-               ng-click="deleteItem($index, item)">
-                X
-            </a>
-            <div class="tileMenu">
-                <a ng-click="addHeader($index, item)">
-                    Ajouter une entête
-                </a>
-                <a ng-click="addText($index, item)">
-                    Ajouter du texte
-                </a>
-                <a ng-click="addImage($index, item)">
-                    Ajouter une image
-                </a>
-                <a ng-click="saveItem(item)">
-                    Save
-                </a>
+
+        <div id="booksContainer" class="tilesContainer">
+            <div class="tile tile-admin container" ng-repeat="item in items" isotopethis=isotopethis>
+                <button class="btn btn-lg btn-danger delete-cross"
+                        ng-click="deleteItem($index, item)">
+                    X
+                </button>
+                <div>
+                    <button class="btn btn-lg btn-primary" ng-click="addHeader($index, item)">
+                        + entête
+                    </button>
+                    <button class="btn btn-lg btn-primary" ng-click="addText($index, item)">
+                        + texte
+                    </button>
+                    <button class="btn btn-lg btn-primary" ng-click="addImage($index, item)">
+                        + image
+                    </button>
+                    <button class="btn btn-lg btn-success" ng-click="saveItem(item)">
+                        Save
+                    </button>
+                    
+                    
+                </div>
+
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-xs-8">
+                            <input class="form-control" placeholder="Theme" ng-model="item.Theme" />
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon">Largeur :</span>
+                            <input class="form-control" placeholder="Largeur" ng-model="item.Width" />
+                            <span class="input-group-addon">(1-3)</span>
+                        </div>
+                    </div>
+                </form>
 
 
-            </div>
-            <div class="tileLeftPart">
-                <div class="vignette">
+
+                    
+            <!--<input class="form-control input-tile-size" placeholder="Hauteur" ng-model="item.Height" />-->
+                <tags item="item"></tags>
+
+                <div class="inner-tile">
+
+
+
+                    <div class="details row" ng-controller="tileDetailController">
+                        <button class="btn btn-lg btn-danger delete-cross2"
+                                ng-click="clearTitle(item)">
+                            X
+                        </button>
+
+                        <textarea class="form-control form-control-custom text-area" placeholder="Titre" ng-model="item.Title">{{item.Title}}</textarea>
+                        
+                    </div>
+
+                    <div class="details row" ng-controller="tileDetailController">
+                        <button class="btn btn-lg btn-danger delete-cross2"
+                           ng-click="clearDescription(item)">
+                            X
+                        </button>
+                        <textarea class="form-control form-control-custom text-area" placeholder="Description" ng-model="item.Description">{{item.Description}}</textarea>
+                    </div>
+
                     <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
-                    <div class="tileLeftPartDetails">
-                        <input ng-model="item.Title" />
-                        <tags item="item"></tags>
-                        <input ng-model="item.Width" />
-                        <input ng-model="item.Height" />
+
+                    <div class="details">
+                        <div ng-repeat="detail in item.Details" ng-controller="tileDetailController">
+                            <button class="btn btn-lg btn-danger delete-cross2"
+                                    ng-click="deleteDetail($index, item)">
+                                X
+                            </button>
+                            <div ng-switch="detail.type">
+                                <textarea ng-switch-when="title" class="form-control tile-header admin-tile-header" ng-model="detail.value"></textarea>
+                                <textarea ng-switch-when="text" class="form-control" ng-model="detail.value"></textarea>
+                                <img ng-switch-when="image" class="drop-box drop-image details-image"
+                                     ng-file-drop="onAddImage($files,item, detail)"
+                                     ng-file-drop-available="true"
+                                     src="{{detail.value}}" />
+                            </div>
+                        </div>
+                    </div>
+                        
+
 
                     </div>
-                </div>
-
             </div>
-            <div class="tileTextArea">
-                <div class="details" ng-repeat="detail in item.Details" ng-controller="tileDetailController">
-                    <a class="delete-cross"
-                       ng-click="deleteDetail($index, item)">
-                        X
-                    </a>
-                    <div ng-switch="detail.type">
-                        <textarea ng-switch-when="title" class="tile-header admin-tile-header" ng-model="detail.value"></textarea>
-                        <textarea ng-switch-when="text" ng-model="detail.value"></textarea>
-                        <img ng-switch-when="image" class="drop-box drop-image"
-                             ng-file-drop="onAddImage($files, item, detail)"
-                             ng-file-drop-available="true"
-                             src="{{detail.value}}" />
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-
 
     <script src="js/jquery-1.9.1.js"></script>
     <!--<script src="js/isotope/isotope.pkgd.js"></script>

@@ -1,9 +1,9 @@
 ﻿
 
 .menu {
-    margin-top: 50px;
+    margin-top: 5px;
     margin-left: 150px;
-    
+    color:rgba(235, 235, 235, 0.90);
     font-size: 1.2em;
     
     -webkit-touch-callout: none;
@@ -38,19 +38,21 @@
     width: 150px;
     margin-right: 3px;
     margin-bottom: 3px;
-    background: white;
+    background:rgba(40, 40, 40, 0.40);
     padding: 5px;
+
     
 }
 
 .subMenu {
+    color:rgba(235, 235, 235, 0.90);
+     font-size: 1.2em;
     width: 802px;
-    height: 100px;
     margin-left: 150px;
-    background: white;
+    background:rgba(40, 40, 40, 0.40);
     padding: 5px;
     display: none;
-
+    cursor:pointer;
 
 }
 .subSubMenu {

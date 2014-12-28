@@ -32,13 +32,14 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
    
     $scope.searchWord = "";
     //$rootScope.apiRootUrl = "http://82.226.165.21:8081/databases/BookFlo";
-    $rootScope.apiRootUrl = "http://localhost:8081/databases/BookFlo";
+    //$rootScope.apiRootUrl = "http://localhost:8081/databases/BookFlo";
+    $rootScope.apiRootUrl = "http://localhost:8085/databases/BookFlo";
     $scope.items = [];
     $scope.tags = [];
-
+    
     //$http({ method: 'GET', url: $rootScope.apiRootUrl + 'indexes/dynamic/Illustrateur?include=Illustrations.,Id&pageSize=30&noCache=101515793' }).
     $scope.init = function () {
-        $http({ method: 'GET', url: $rootScope.apiRootUrl + '/indexes/Items?pageSize=30&sort=-LastModified&noCache=1015157938' }).
+        $http({ method: 'GET', url: $rootScope.apiRootUrl + '/indexes/Items?start=0&pageSize=200&sort=-LastModified' }).
             success(function (data, status, headers, config) {
                 angular.forEach(data.Results, function (item, index) {
                     item.editing = false;
@@ -47,10 +48,7 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
                     }
                     item.Id = item['@metadata']['@id'];
                     $scope.items.push(item);
-                    
                 });
-                
-
             }).
             error(function (data, status, headers, config) {
                 console.log(data);

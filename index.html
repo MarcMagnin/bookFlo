@@ -15,6 +15,8 @@ html, body { height: 100%;
              background-color: rgb(128, 128, 128);
              font-family: "aktiv-grotesk-std", "Helvetica Neue", "Helvetica", sans-serif;
              color: rgb(255, 255, 255);
+             overflow-x:hidden;
+             overflow-y:hidden;
 }
 
 
@@ -62,10 +64,15 @@ html, body { height: 100%;
                 </div>-->
 
             <div id="booksContainer" class="tilesContainer">
-                <div class="tile {{item.Title}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
-                
+                <div class="tile {{item.Theme}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
+                    <div class="inner-tile">
+
+                        <div class="details">
+                            <p class="tile-header">{{item.Title}}</p>
+                            <p>{{item.Description}}</p>
+                        </div>
+
                         <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
-                        <div class="vertical-text">{{item.Title}}</div>
 
 
                         <!--<div class="tileLeftPartDetails">
@@ -73,6 +80,7 @@ html, body { height: 100%;
         </div>-->
 
 
+                        <!--ng-repeat"item in items | filter:(items.indexOf(item)%3 == 0)-->
                         <div class="details" ng-repeat="detail in item.Details">
                             <div ng-switch="detail.type">
                                 <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
@@ -81,7 +89,8 @@ html, body { height: 100%;
                             </div>
                         </div>
                     </div>
-
+                    <div class="vertical-text">{{item.Theme}}</div>
+                </div>
                
             </div>
             <script src="js/jquery-1.9.1.js"></script>

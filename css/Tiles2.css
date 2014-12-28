@@ -4,10 +4,13 @@
     -moz-transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;  
 }
-.tileMenu {
-    width:150px;
-    display :inline-block;
-    vertical-align:middle;
+
+a {
+    cursor:pointer;
+    opacity:0.6
+}
+a:hover {
+    opacity:1;
 }
 
 .tileSelected{
@@ -86,93 +89,24 @@
   clear: both;
 }*/
 p {
-    margin-top : 5px;
-    margin-bottom: 0px;
+    font-size :1.5em;
+    margin-top:10px;
+    margin-bottom: 10px;
 }
 
 .smallHeightImage {
     max-height : 250px;
         
 }
-.tile {
-
-    float: left;
-    cursor: pointer;
-    /*display: flex;
-    align-items: flex-start;*/
-    cursor: pointer;
-    background:rgba(40, 40, 40, 0.40);
-    padding: 10px 0 10px 10px;
-    overflow-y:auto;
-    margin-right: 10px;
-    margin-top: 5px;
-    
-   
-     
-    -o-transition: all .3s ease-out;
-    -moz-transition: all .3s ease-out;
-    -webkit-transition: all 0.3s ease-out;/*, position 0s linear 1s;*/
-    transition: all .3s ease-out;
-   
-
-    
-    
-}
-.details {
+.vertical-text-open {
     display:none;
-    -webkit-flex-direction: column;
-   -ms-flex-direction: column;
-   flex-direction: column;
-   overflow:auto;
-
-       
 }
 
-.univers2 {
-    background: rgba(40, 226, 40, 0.3);
-}
-
-.large {
-    width: 800px;
-    /*height: calc(100% - 200px);*/
-    height: 100%;
-    z-index: 100;
-}
-.large .auteurLink {
-    display: block;
-}
-.auteurLink {
-    display: none;
-}
-
-.tileLeftPart {
-    display :inline;
-    vertical-align:middle;
-    
-}
-.details-image {
-    max-width:90%;
-    margin:20px 20px 0 0;
-    display :inline;
-    vertical-align:middle;
-}
-.vignette {
-    display: flex;
-    flex-direction:row;
-    align-items:flex-start;
-}
-.tileHeroImage {
-    max-height:400px;
-    padding-right:30px;
-    
-}
-.innerTile{
-    
-}
 .vertical-text {
     position:absolute;
     top:0;
-    right:0;
+    left:100%;
+    padding:5px 0 0 10px;
     font-size:1.6em;  
     
     overflow:hidden;
@@ -181,19 +115,80 @@ p {
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
 
-	-ms-transform-origin: 50% 100%;
-	-moz-transform-origin: 50% 100%;
-	-webkit-transform-origin: 50% 100%;
-	transform-origin: 50% 100%;
+	-ms-transform-origin: top left 0;
+	-moz-transform-origin: top left 0;
+	-webkit-transform-origin: top left 0;
+	transform-origin: top left 0;
 
-	/*background: rgba(0, 0, 0, 0.75);*/
     white-space:nowrap;
-	padding-left: 10px;
-    padding-bottom: 7px;
-	/*text-transform: uppercase;*/
+}
+.inner-tile-open{
+    /*padding-right:40px;*/
+    margin-right:-10px;  
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.inner-tile{
+    padding-right:40px;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+
+.tile {
+    max-width:625px;
+    float: left;
+    /*display: flex;
+    align-items: flex-start;*/
+    background:rgba(40, 40, 40, 0.50);
+    padding: 10px 0px 10px 10px;
+    
+    margin-right: 10px;
+    margin-top: 5px;
+    -o-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-transition: all 0.3s ease-out;/*, position 0s linear 1s;*/
+    transition: all .3s ease-out;
+}
+.details {
+    display:none;
+    /*-webkit-flex-direction: column;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   overflow:auto;*/
+    margin:10px;
+    position:relative;
+
+}
+
+.details-image {
+    display:block;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:auto;
+    margin-right:auto;
+    width:600px;
+}
+
+.univers2 {
+    background: rgba(40, 226, 40, 0.3);
+}
+
+
+.tileHeroImage {
+    max-width:600px;
+    display:block;
+    cursor:pointer;     
+    margin-left:auto;
+    margin-right:auto;
+}
+.tileHeroImage-selected {
+    width:100%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
 }
 .tileLeftPartDetails {
-    display:none;
     -webkit-flex-direction: column;
    -ms-flex-direction: column;
    flex-direction: column;
@@ -253,8 +248,11 @@ p {
 -webkit-transition: all .2s ease-out .3s;
 }
 
-
-
+.tileLeftPart {
+    display :inline;
+    vertical-align:middle;
+    
+}
 .nouveautesTitle {
     position: absolute;
     top: 10px;
@@ -263,7 +261,11 @@ p {
     font-family: ArcherLight;
     font-size: 35px;
 }
-
+.vignette {
+    display: flex;
+    flex-direction:row;
+    align-items:flex-start;
+}
 .filters{
     font-family: ArcherLight;
     font-size: 35px;
