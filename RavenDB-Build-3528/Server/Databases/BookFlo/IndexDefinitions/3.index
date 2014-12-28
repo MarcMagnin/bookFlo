@@ -1,0 +1,24 @@
+{
+  "IndexId": 3,
+  "Name": "Items",
+  "LockMode": "Unlock",
+  "Map": "from doc in docs.Item\r\nlet LastModified = doc[\"@metadata\"][\"Last-Modified\"]\r\nselect new { Title = doc.Title, LastModified} ",
+  "Maps": [
+    "from doc in docs.Item\r\nlet LastModified = doc[\"@metadata\"][\"Last-Modified\"]\r\nselect new { Title = doc.Title, LastModified} "
+  ],
+  "Reduce": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Suggestions": {},
+  "TermVectors": {},
+  "SpatialIndexes": {},
+  "InternalFieldsMapping": {},
+  "MaxIndexOutputsPerDocument": null,
+  "Type": "Map",
+  "DisableInMemoryIndexing": false
+}

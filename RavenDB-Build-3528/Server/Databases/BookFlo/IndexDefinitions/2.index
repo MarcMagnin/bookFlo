@@ -1,0 +1,25 @@
+{
+  "IndexId": 2,
+  "Name": "Tags",
+  "LockMode": "Unlock",
+  "Map": "from item in docs.Item\r\nfrom itemTags in item.Tags\r\nselect new { Name = itemTags.ToString().ToLower(), Count = 1 }; ",
+  "Maps": [
+    "from item in docs.Item\r\nfrom itemTags in item.Tags\r\nselect new { Name = itemTags.ToString().ToLower(), Count = 1 }; ",
+    "from item in docs.Item\r\nselect new { Name = item.Title.ToString().ToLower(), Count = 1 };"
+  ],
+  "Reduce": " from tagCount in results\r\ngroup tagCount by tagCount.Name\r\ninto g\r\nselect new {Name = g.Key, Count = g.Sum(x => x.Count) };",
+  "IsMapReduce": true,
+  "IsCompiled": false,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Suggestions": {},
+  "TermVectors": {},
+  "SpatialIndexes": {},
+  "InternalFieldsMapping": {},
+  "MaxIndexOutputsPerDocument": null,
+  "Type": "MapReduce",
+  "DisableInMemoryIndexing": false
+}
