@@ -156,6 +156,7 @@
     <Content Include="js\jquery-1.9.1.js" />
     <Content Include="js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="js\stuff.js" />
+    <Content Include="RECOVERDB.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
