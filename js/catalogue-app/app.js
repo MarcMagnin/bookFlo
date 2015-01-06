@@ -5,7 +5,7 @@ var $container = $('.tilesContainer');
 
 app.directive('tags', function ($http, $rootScope) {
     return {
-        restrict: 'E',
+        restrict: 'E', 
         scope: { item: '=' },
         template:
             '<div class="tags">' +
@@ -123,13 +123,15 @@ app.directive('isotopethis', function () {
 
                 // close the menu if open
                 $('.subMenu').slideUp(200);
-
-
+            
+               
                 if (prev) {
                     //prev.find(".tileTextArea").slideToggle(0);
                     //$container.isotope('reLayout');
+                    prev.toggleClass("tile");
+                    prev.toggleClass("tile-open");
 
-                    prev.find(".details").slideToggle(200);
+                    prev.find(".details").slideToggle(150);
                     var inner = prev.find(".inner-tile-open")
                     inner.toggleClass("inner-tile");
                     inner.toggleClass("inner-tile-open");
@@ -146,21 +148,18 @@ app.directive('isotopethis', function () {
                     // prev.find("img").animate({ "height": "100%" }, 300, 'easeOutCubic');
                     //prev.find("img").toggleClass("smallHeightImage");
                     if (prev.is($this)) {
-                        $container.isotope('reLayout');
+                        setTimeout(function () {
+                            $container.isotope('reLayout');
+                        }, 200);
                         prev = null;
                         return;
                     }
 
                 }
 
+                $this.toggleClass("tile");
+                $this.toggleClass("tile-open");
 
-
-                //$this.find("img").toggleClass("smallHeightImage");
-
-                //if (image.height() > 380) {
-                //    image.attr('prevHeight', image.height());
-                //    $this.find("img").animate({ "height": "380px" }, 300, 'easeOutCubic');
-                //}
                 var image = $this.find("img");
                 image.removeClass(function (index, css) {
                     var elem = $(this);
@@ -172,25 +171,25 @@ app.directive('isotopethis', function () {
                         }
                     });
                 });
-                //var image = $this.find("img"); ("div:regex(class, .*sd.*)")
-                //image.attr('prevWidth', image.width());
-                // image.animate({ "width": "auto" }, 300, 'easeOutCubic');
                 var inner = $this.find(".inner-tile");
+                inner.css({
+                    "max-height": $('#booksContainer').height() - 50 + "px",
+                });
+
                 inner.toggleClass("inner-tile");
                 inner.toggleClass("inner-tile-open");
+                
 
-
+               
                 var vertText = $this.find(".vertical-text");
                 vertText.toggleClass("vertical-text");
                 vertText.toggleClass("vertical-text-open");
 
                 
-                inner.css({
-                    "max-height": $('#booksContainer').height() - 50 + "px",
-                });
+           
                 $container.isotope('reLayout');
                 var details = $this.find(".details");
-                details.slideToggle(200);
+                details.slideToggle(150);
                 setTimeout(function () {
                     $container.isotope('reLayout');
                 }, 200);

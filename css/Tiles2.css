@@ -50,6 +50,7 @@ a:hover {
 }
 
 .tilesContainer {
+    background:rgba(12, 11, 13, 0.5);
     padding-left:150px;
     height: -moz-calc(100% - 50px) !important; 
     height: -webkit-calc(100% - 50px)!important; 
@@ -88,11 +89,24 @@ a:hover {
   display: block;
   clear: both;
 }*/
+
+/*http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/complete_examples.html*/
 p {
     font-size :1.5em;
     margin-top:10px;
     margin-bottom: 10px;
 }
+
+hr{
+	background-color: transparent;
+	height: 0;
+	border: none;
+	border-bottom: 1px solid rgba(255,255,255,0.08);
+	border-top: 1px solid rgba(0,0,0,0.9);
+	margin: 0;
+	clear: both; 
+}
+
 
 .smallHeightImage {
     max-height : 250px;
@@ -123,14 +137,16 @@ p {
     white-space:nowrap;
 }
 .inner-tile-open{
-    /*padding-right:40px;*/
-    margin-right:-10px;  
+    margin:0px 0px 10px 10px;
+    padding:20px;
+       padding-right:30px;
     overflow-y:auto;
     overflow-x:hidden;
 }
 
 .inner-tile{
-    padding-right:40px;
+    margin:10px;
+    padding-right:30px;
     overflow-y:hidden;
     overflow-x:hidden;
 }
@@ -140,8 +156,8 @@ p {
     float: left;
     /*display: flex;
     align-items: flex-start;*/
-    background:rgba(40, 40, 40, 0.50);
-    padding: 10px 0px 10px 10px;
+    background:rgba(113, 109, 109, 0.50);
+  
     
     margin-right: 10px;
     margin-top: 5px;
@@ -149,16 +165,33 @@ p {
     -moz-transition: all .3s ease-out;
     -webkit-transition: all 0.3s ease-out;/*, position 0s linear 1s;*/
     transition: all .3s ease-out;
+    -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
+    -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; 
 }
+.tile-open {
+    float: left;
+    /*display: flex;
+    align-items: flex-start;*/
+       background:rgba(13, 19, 19, 0.50);
+   
+    margin-right: 10px;
+    margin-top: 5px;
+    -o-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-transition: all 0.3s ease-out;/*, position 0s linear 1s;*/
+    transition: all .3s ease-out;
+    -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
+    -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; 
+}
+
 .details {
     display:none;
     /*-webkit-flex-direction: column;
    -ms-flex-direction: column;
    flex-direction: column;
    overflow:auto;*/
-    margin:10px;
     position:relative;
-
+     margin-bottom: 5px;
 }
 
 .details-image {
@@ -242,10 +275,10 @@ p {
     font-family: ArcherLight, Helvetica, Arial, sans-serif;
 
 
-    transition: all .2s ease-out .3s;
-    -o-transition: all .2s ease-out .3s;
-    -moz-transition: all .2s ease-out .3s;
--webkit-transition: all .2s ease-out .3s;
+    transition: all .2s;
+    -o-transition: all .2s ;
+    -moz-transition: all .2s ;
+-webkit-transition: all .2s ;
 }
 
 .tileLeftPart {
