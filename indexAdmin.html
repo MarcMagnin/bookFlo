@@ -10,49 +10,7 @@
     <link href="css/Menu2.css" rel="stylesheet" />
     <link href="css/admin.css" rel="stylesheet" />
     <link href="bootstrap-3.3.1-dist/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-                /* inherit height from window */
-html, body { height: 100%; 
-             width:100%;
-             background-color: rgb(128, 128, 128);
-}
-                /*body {
-            width: 90%;
-            padding-left: 4rem;
-        }*/
-
-                /*height : 300px;
-          white-space: nowrap;
-          overflow-y: hidden;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          padding: 1rem;
-          background-color: #ccc;*/
-
-
-                @media screen and (min-width: 0px) and (max-width:800px) and (max-height:800px) {
-                    body {
-                        width: 100%;
-                        padding-left: 0;
-                    }
-
-                    .menu {
-                        margin-top: 0px;
-                        margin-left: 0px;
-                        font-size: 1em;
-                        padding-left: 0;
-                        text-align: center;
-                    }
-
-                    .tilesContainer {
-                        padding-left: 0;
-                    }
-
-                    .floatingmenu {
-                        width: 100px;
-                    }
-                }
-    </style>
+    
     
 </head>
 <body class="drop-box" ng-app="BookFlo" ng-controller="mainController" ng-init="init()"
@@ -60,52 +18,22 @@ html, body { height: 100%;
       ng-file-drop-available="true">
     <p class="footer">Designed by <a href="http://" target="_blank">Florie Briand</a> and Marc Magnin - 2014 </p>
 
-    <div class="menu">
-        <p class="menuItem" id-menu=".menuCatalogue">catalogue</p>
-        <p class="menuItem" id-menu=".menuUnivers">univers</p>
-        <p class="menuItem" id-menu=".menuActu">actualités</p>
-        <p>professionnels</p>
-        <p>contacts</p>
-    </div>
-    <div class="subMenu menuCatalogue">
-        <p>bla bla test</p>
-    </div>
-    <div class="subMenu menuUnivers">
-        <p>Hehe c'est cool ici non ?</p>
-    </div>
-    <div class="subMenu menuActu">
-        <div class="subSubMenu">
-            <img src="images/72_26519.jpg" />
-            <div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-
-                </p>
-            </div>
-        </div>
-
-    </div>
-
-    <!--
-        <div class="filters">
-            <ul>
-                <li data-filter="*">Tous les livres</li>
-                <li data-filter=".tag1">monstres</li>
-                <li data-filter=".tag2">animaux</li>
-                <li data-filter=".tag3">poules</li>
-                <li><input id="filterInput" type="text" onkeypress="filterText(event)" /></li>
-
-            </ul>
-        </div>-->
-
 
         <div id="booksContainer" class="tilesContainer">
-            <div class="tile tile-admin container" ng-repeat="item in items" isotopethis=isotopethis>
+            <div class="tile tile-admin " ng-repeat="item in items" isotopethis=isotopethis>
                 <button class="btn btn-lg btn-danger delete-cross"
                         ng-click="deleteItem($index, item)">
                     X
                 </button>
-                <div>
+                <button class="btn btn-lg btn-success" ng-click="saveItem(item)">
+                    Save
+                </button>
+                 <input class="form-control" placeholder="Theme" ng-model="item.Theme" />
+                <tags item="item"></tags>
+                <input class="form-control" placeholder="Largeur" ng-model="item.Width" />            
+                
+
+                <div class="details hidden-object">
                     <button class="btn btn-lg btn-primary" ng-click="addHeader($index, item)">
                         + entête
                     </button>
@@ -115,76 +43,54 @@ html, body { height: 100%;
                     <button class="btn btn-lg btn-primary" ng-click="addImage($index, item)">
                         + image
                     </button>
-                    <button class="btn btn-lg btn-success" ng-click="saveItem(item)">
-                        Save
-                    </button>
-                    
-                    
+
                 </div>
 
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-xs-8">
-                            <input class="form-control" placeholder="Theme" ng-model="item.Theme" />
-                        </div>
-                        <div class="input-group col-xs-4">
-                            <span class="input-group-addon">Largeur :</span>
-                            <input class="form-control" placeholder="Largeur" ng-model="item.Width" />
-                            <span class="input-group-addon">(1-3)</span>
-                        </div>
-                    </div>
-                </form>
-
-
-
-                    
-            <!--<input class="form-control input-tile-size" placeholder="Hauteur" ng-model="item.Height" />-->
-                <tags item="item"></tags>
 
                 <div class="inner-tile">
-
-
-
-                    <div class="details row" ng-controller="tileDetailController">
-                        <button class="btn btn-lg btn-danger delete-cross2"
+                    <div class="vertical-text">{{item.Theme}}</div>
+                    <div class="details hidden-object" ng-controller="tileDetailController">
+                        <button class="btn btn-lg btn-danger  btn-small delete-cross2"
                                 ng-click="clearTitle(item)">
                             X
                         </button>
 
-                        <textarea class="form-control form-control-custom text-area" placeholder="Titre" ng-model="item.Title">{{item.Title}}</textarea>
-                        
+                        <textarea class="form-control text-area" placeholder="Titre" ng-model="item.Title">{{item.Title}}</textarea>
+
                     </div>
 
-                    <div class="details row" ng-controller="tileDetailController">
-                        <button class="btn btn-lg btn-danger delete-cross2"
-                           ng-click="clearDescription(item)">
+                    <div class="details hidden-object" ng-controller="tileDetailController">
+                        <button class="btn btn-lg btn-danger  btn-small delete-cross2"
+                                ng-click="clearDescription(item)">
                             X
                         </button>
-                        <textarea class="form-control form-control-custom text-area" placeholder="Description" ng-model="item.Description">{{item.Description}}</textarea>
+                        <textarea class="form-control  text-area" placeholder="Description" ng-model="item.Description">{{item.Description}}</textarea>
                     </div>
 
                     <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
 
-                    <div class="details">
-                        <div ng-repeat="detail in item.Details" ng-controller="tileDetailController">
-                            <button class="btn btn-lg btn-danger delete-cross2"
+                    
+
+                    <div class="hidden-object">
+                        <div class="details" ng-repeat="detail in item.Details" ng-controller="tileDetailController">
+                            <button class="btn btn-lg btn-danger btn-small delete-cross2"
                                     ng-click="deleteDetail($index, item)">
                                 X
                             </button>
                             <div ng-switch="detail.type">
-                                <textarea ng-switch-when="title" class="form-control tile-header admin-tile-header" ng-model="detail.value"></textarea>
-                                <textarea ng-switch-when="text" class="form-control" ng-model="detail.value"></textarea>
+                                <textarea ng-switch-when="title" class="form-control text-area" ng-model="detail.value"></textarea>
+                                <textarea ng-switch-when="text" class="form-control text-area" ng-model="detail.value"></textarea>
                                 <img ng-switch-when="image" class="drop-box drop-image details-image"
                                      ng-file-drop="onAddImage($files,item, detail)"
                                      ng-file-drop-available="true"
                                      src="{{detail.value}}" />
                             </div>
                         </div>
-                    </div>
-                        
+                    </div>    
 
 
                     </div>
+                
             </div>
         </div>
 

@@ -8,40 +8,7 @@
     <link href="css/Tiles2.css" rel="stylesheet" />
     <link href="css/Menu2.css" rel="stylesheet" />
 
-    <style>
-        /* inherit height from window */
-html, body { height: 100%; 
-             width:100%;
-             background-color: rgb(128, 128, 128);
-             font-family: "aktiv-grotesk-std", "Helvetica Neue", "Helvetica", sans-serif;
-             color: rgb(255, 255, 255);
-             overflow-x:hidden;
-             overflow-y:hidden;
-
-
-
-}
-/* Let's get this party started */
-::-webkit-scrollbar {
-    width: 4px;
-}
- 
-/* Track */
-::-webkit-scrollbar * {
-background:transparent !important; 
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    background: rgba(0,0,0,0.5); 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-	background: rgb(255, 106, 0,0.8); 
-}
-    </style>
+    
 </head>
 <body ng-app="BookFlo" ng-controller="mainController" ng-init="init()">
     <p class="footer">Designed by <a href="http://" target="_blank">Florie Briand</a> and Marc Magnin - 2014 </p>
@@ -72,23 +39,12 @@ background:transparent !important;
 
             </div>
 
-            <!--
-                <div class="filters">
-                    <ul>
-                        <li data-filter="*">Tous les livres</li>
-                        <li data-filter=".tag1">monstres</li>
-                        <li data-filter=".tag2">animaux</li>
-                        <li data-filter=".tag3">poules</li>
-                        <li><input id="filterInput" type="text" onkeypress="filterText(event)" /></li>
-
-                    </ul>
-                </div>-->
 
             <div id="booksContainer" class="tilesContainer">
                 <div class="tile {{item.Theme}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
                     <div class="inner-tile">
 
-                        <div class="details">
+                        <div class="details hidden-object">
                             <p class="tile-header">{{item.Title}}</p>
                             <hr />
                             <p>{{item.Description}}</p>
@@ -104,7 +60,7 @@ background:transparent !important;
 
 
                         <!--ng-repeat"item in items | filter:(items.indexOf(item)%3 == 0)-->
-                        <div class="details" ng-repeat="detail in item.Details">
+                        <div class="details hidden-object" ng-repeat="detail in item.Details">
                             <div ng-switch="detail.type">
                                 <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
                                 <p ng-switch-when="text">{{detail.value}}</p>

@@ -131,7 +131,7 @@ app.directive('isotopethis', function () {
                     prev.toggleClass("tile");
                     prev.toggleClass("tile-open");
 
-                    prev.find(".details").slideToggle(150);
+                    prev.find(".hidden-object").slideToggle(150);
                     var inner = prev.find(".inner-tile-open")
                     inner.toggleClass("inner-tile");
                     inner.toggleClass("inner-tile-open");
@@ -188,7 +188,7 @@ app.directive('isotopethis', function () {
                 
            
                 $container.isotope('reLayout');
-                var details = $this.find(".details");
+                var details = $this.find(".hidden-object");
                 details.slideToggle(150);
                 setTimeout(function () {
                     $container.isotope('reLayout');

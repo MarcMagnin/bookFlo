@@ -1,7 +1,36 @@
 ﻿.tile-admin {
-    min-width:450px
+   max-width:550px
 }
 
+.tilesContainer {
+    -webkit-box-sizing:content-box !important;
+    -moz-box-sizing:content-box !important;
+    box-sizing:content-box !important;
+}
+
+.inner-tile-open{
+    margin:0px 0px 10px 10px;
+    padding:20px;
+       padding-right:30px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.inner-tile{
+    margin:10px;
+    padding-right:30px;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+.full-width {
+    width:100%;
+}
+
+.btn-small {
+    width:30px !important;
+    height:30px !important;
+    padding:0 !important;
+}
 .tags {
       display :inline-block;
 }
@@ -9,6 +38,7 @@
     width:40px !important;
     display :inline-block !important;
 }
+
 .form-control-custom {
     width:90% !important;
     padding:15px !important;
@@ -23,7 +53,7 @@
     padding: 5px;
     margin-right: 10px;
     color:blue;
-   text-decoration:underline;
+    text-decoration:underline;
 }
 .tag:hover {
     color: red;
@@ -47,9 +77,11 @@
 }
 .delete-cross {
     position:absolute;
-    right:5px;
+    right:0px;
 }
-
+.inner-tile {
+    position:relative;
+}
 .delete-cross2 {
     position:absolute;
     right:0px;

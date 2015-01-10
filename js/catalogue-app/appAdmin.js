@@ -125,12 +125,14 @@ app.directive('isotopethis', function () {
                     prev.find(".tileTextArea").slideToggle(0);
                     $container.isotope('reLayout');
 
-                    prev.find(".details").slideToggle(200);
+                    prev.find(".hidden-object").slideToggle(200);
                     var inner = prev.find(".inner-tile-open")
+
                     inner.toggleClass("inner-tile");
                     inner.toggleClass("inner-tile-open");
                     var image = prev.find("img");
                     image.addClass(image.attr('prevWidthClass'));
+                    image.toggleClass("full-width");
                     if (image.attr('prevHeight')) {
                         image.animate({ "height": image.attr('prevHeight') + "px" }, 300, 'easeOutCubic');
                     }
@@ -163,6 +165,9 @@ app.directive('isotopethis', function () {
                         }
                     });
                 });
+                image.toggleClass("full-width");
+                
+
                 //var image = $this.find("img"); ("div:regex(class, .*sd.*)")
                 //image.attr('prevWidth', image.width());
                 // image.animate({ "width": "auto" }, 300, 'easeOutCubic');
@@ -173,7 +178,7 @@ app.directive('isotopethis', function () {
                     "max-height": $('#booksContainer').height() - 210 + "px",
                 });
                 $container.isotope('reLayout');
-                var details = $this.find(".details");
+                var details = $this.find(".hidden-object");
                 details.slideToggle(200);
                 setTimeout(function () {
                     $container.isotope('reLayout');
