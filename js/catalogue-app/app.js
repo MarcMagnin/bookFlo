@@ -89,23 +89,57 @@ app.directive('isotopethis', function () {
     return {
         link: function (scope, elm) {
 
-            $container.isotope('insert', elm);
+            var img = elm.find(".tileHeroImage");
+            img.load(function () {
+                $container.isotope('insert', elm);
+                
+            });
 
-            setTimeout(function () {
-                $container.isotope('reLayout');
-            }, 200);
+            
 
+            //elm.addEventListener('mousewheel', function(event) {
+            //    var maxX = this.scrollWidth - this.offsetWidth;
+            //    var maxY = this.scrollHeight - this.offsetHeight;
 
+            //    if (this.scrollLeft + event.deltaX < 0 ||
+            //    this.scrollLeft + event.deltaX > maxX ||
+            //    this.scrollTop + event.deltaY < 0 ||
+            //    this.scrollTop + event.deltaY > maxY) {
+            //        event.preventDefault();
+            //        // manually take care of the scroll
+            //        this.scrollLeft = Math.max(0, Math.min(maxX, this.scrollLeft + event.deltaX));
+            //        this.scrollTop = Math.max(0, Math.min(maxY, this.scrollTop + event.deltaY));
+            //    }
+            //}, false);
             // handle the mousewheel on tiles
-            elm.bind('mousewheel', function (event, delta, deltaX, deltaY) {
+            elm.mousewheel(function (event) {
+                
+                if (event.deltaX > 0) {
+                    return;
+                }
+                
                 var openTile = elm.find(".inner-tile-open");
-                if (openTile.length > 0 && openTile.height()>600) {
-                    openTile.stop().animate({ scrollTop: '-=' + (500 * deltaX) + 'px' }, 400, 'easeOutQuint');
-                    openTile.stop().animate({ scrollTop: '-=' + (500 * deltaY) + 'px' }, 400, 'easeOutQuint');
+                if (openTile && openTile[0] && openTile[0].scrollHeight > 600) {
+
+                    openTile.stop().animate({ scrollTop: '-=' + (500 * event.deltaX) + 'px' }, 400, 'easeOutQuint');
+                    openTile.stop().animate({ scrollTop: '-=' + (500 * event.deltaY) + 'px' }, 400, 'easeOutQuint');
                     event.preventDefault();
                     event.stopPropagation();
+                    event.stopImmediatePropagation();
                 }
             });
+
+            ///elm.bind('mousewheel', function (event, delta, deltaX, deltaY) {
+
+            //    var openTile = elm.find(".inner-tile-open");
+            //    if (openTile.length > 0 && openTile.height()>600) {
+            //        openTile.stop().animate({ scrollTop: '-=' + (500 * deltaX) + 'px' }, 400, 'easeOutQuint');
+            //        openTile.stop().animate({ scrollTop: '-=' + (500 * deltaY) + 'px' }, 400, 'easeOutQuint');
+            //        event.preventDefault();
+            //        event.stopPropagation();
+            //        event.stopImmediatePropagation();
+            //    }
+            //});
 
             elm.find("a").click(function () {
                 var selector = $(this).attr('data-filter');

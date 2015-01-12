@@ -101,6 +101,7 @@ app.directive('isotopethis', function () {
                     openTile.stop().animate({ scrollTop: '-=' + (500 * deltaY) + 'px' }, 400, 'easeOutQuint');
                     event.preventDefault();
                     event.stopPropagation();
+                    event.stopImmediatePropagation();
                 }
             });
 
