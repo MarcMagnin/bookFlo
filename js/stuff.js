@@ -4,9 +4,15 @@
 
 //if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
 $(document).ready(function () {
+
+
     $('body, html').mousewheel(function (event) {
-        $('#booksContainer').stop().animate({ scrollLeft: '+=' + (40 * event.deltaY) + 'px' }, 200, 'easeOutQuint');
-        $('#booksContainer').stop().animate({ scrollLeft: '+=' + (40 * event.deltaX) + 'px' }, 200, 'easeOutQuint');
+        console.log("X:" + event.deltaX + "   Y  :" + event.deltaY)
+
+        if(event.deltaY != 0)
+            $('#booksContainer').stop().animate({ scrollLeft: '-=' + (200 * event.deltaY) + 'px' }, 200, 'easeOutQuint');
+        else if (event.deltaY != 0)
+        $('#booksContainer').stop().animate({ scrollLeft: '-=' + (40 * event.deltaX) + 'px' }, 200, 'easeOutQuint');
             //console.log(event.deltaX, event.deltaY, event.deltaFactor);
 
         

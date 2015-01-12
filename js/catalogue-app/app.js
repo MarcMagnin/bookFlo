@@ -114,15 +114,16 @@ app.directive('isotopethis', function () {
             // handle the mousewheel on tiles
             elm.mousewheel(function (event) {
                 
-                if (event.deltaX > 0) {
+                if (event.deltaY == 0) {
                     return;
                 }
                 
                 var openTile = elm.find(".inner-tile-open");
                 if (openTile && openTile[0] && openTile[0].scrollHeight > 600) {
 
-                    openTile.stop().animate({ scrollTop: '-=' + (500 * event.deltaX) + 'px' }, 400, 'easeOutQuint');
-                    openTile.stop().animate({ scrollTop: '-=' + (500 * event.deltaY) + 'px' }, 400, 'easeOutQuint');
+                    
+                    openTile.stop().animate({ scrollTop: '-=' + (50 * event.deltaY) + 'px' }, 50, 'easeOutQuint');
+                    //openTile.scrollTop(openTile.scrollTop()-(event.deltaY*20));
                     event.preventDefault();
                     event.stopPropagation();
                     event.stopImmediatePropagation();

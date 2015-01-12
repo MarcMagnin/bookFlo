@@ -154,3 +154,6 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/RavenDB-Build-3528/Server/Databases/BookFlo/Indexes
+/RavenDB-Build-3528/Server/Raven/CompiledIndexCache
+/RavenDB-Build-3528/Server
