@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Editions Thierry Magnier</title>
+    <link href="css/Tiles4.css" rel="stylesheet" />
+    <link href="css/Menu2.css" rel="stylesheet" />
+
+</head>
+<body ng-app="BookFlo" ng-controller="mainController" ng-init="init()">
+    <p class="footer">Designed by <a href="http://" target="_blank">Florie Briand</a> and Marc Magnin - 2014 </p>
+
+    <div class="menu">
+        <p class="menuItem" id-menu=".menuTheme">theme</p>
+        <p>contacts</p>
+    </div>
+    <div class="subMenu menuTheme">
+        <a ng-click="filter('*')">Tous</a>
+        <div class="tag1" ng-repeat="tag in tags">
+            <a ng-click="filter(tag.Name)">{{tag.Name}}</a>
+        </div>
+    </div>
+    <div class="subMenu menuUnivers">
+        <p>Hehe c'est cool ici non ?</p>
+    </div>
+    <div class="subMenu menuActu">
+        <div class="subSubMenu">
+
+            <div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="booksContainer" class="tilesContainer">
+        <div class="tile {{item.Theme|lowercase}} {{item.Tags|lowercase}}" ng-repeat="item in items" isotopethis=isotopethis>
+            <div class="inner-tile" style="display: inline-flex;
+    align-items: flex-start;">
+
+
+                <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
+
+                <div id="right-part" class="right-part">
+                    <div class="details hidden-object">
+                        <p class="tile-header">{{item.Title}}</p>
+                        <hr />
+                        <p>{{item.Description}}</p>
+                    </div>
+
+
+
+                    <div class="details hidden-object" ng-repeat="detail in item.Details">
+                        <div ng-switch="detail.type">
+                            <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
+                            <p ng-switch-when="text">{{detail.value}}</p>
+                            <img ng-switch-when="image" class="details-image" src="{{detail.value}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="vertical-text">{{item.Theme}}</div>
+        </div>
+
+    </div>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
+    <!--<script src="js/isotope/isotope.pkgd.js"></script>
+    <script src="js/isotope/masonryHorizontal.js"></script>-->
+    <script src="js/isotope/jquery.isotope.js"></script>
+    <!--contains easing animations as well -->
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/stuff.js"></script>
+
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script src="js/angular-file-upload.js"></script>
+
+    <script src="js/catalogue-app/app2.js"></script>
+    <script type="text/javascript" src="js/catalogue-app/controllers/mainController.js"></script>
+    <script src="js/catalogue-app/controllers/tileDetailController.js"></script>
+</body>
+</html>

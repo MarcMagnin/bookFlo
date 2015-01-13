@@ -65,6 +65,8 @@ var xStart, yStart = 0;
 
 (function ($) {
     $.fn.hasVerticalScrollBar = function () {
+        if (!this.get(0))
+            return false;
         return this.get(0).scrollHeight > this.get(0).clientHeight;
     }
 })(jQuery);

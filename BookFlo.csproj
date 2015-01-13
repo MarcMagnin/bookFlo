@@ -67,6 +67,7 @@
     <Content Include="bootstrap-3.3.1-dist\dist\js\npm.js" />
     <Content Include="css\admin.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\main.css" />
@@ -76,13 +77,16 @@
     <Content Include="css\Slider.css" />
     <Content Include="css\Tiles.css" />
     <Content Include="css\Tiles2.css" />
+    <Content Include="css\Tiles4.css" />
     <Content Include="css\Tiles3.css" />
+    <Content Include="index2.html" />
     <Content Include="indexAdmin.html" />
     <Content Include="index.html" />
     <Content Include="js\angular-file-upload-html5-shim.js" />
     <Content Include="js\angular-file-upload.js" />
     <Content Include="js\angular.min.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\catalogue-app\app2.js" />
     <Content Include="js\catalogue-app\app.js" />
     <Content Include="js\catalogue-app\appAdmin.js" />
     <Content Include="js\catalogue-app\controllers\mainController.js" />
@@ -188,6 +192,24 @@
     <Content Include="bootstrap-3.3.1-dist\dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="bootstrap-3.3.1-dist\dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="bootstrap-3.3.1-dist\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\RobotoTTF\Roboto-Black.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-BlackItalic.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-Bold.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-BoldItalic.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-Italic.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-Light.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-LightItalic.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-Medium.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-MediumItalic.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-Regular.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-Thin.ttf" />
+    <Content Include="fonts\RobotoTTF\Roboto-ThinItalic.ttf" />
+    <Content Include="fonts\RobotoTTF\RobotoCondensed-Bold.ttf" />
+    <Content Include="fonts\RobotoTTF\RobotoCondensed-BoldItalic.ttf" />
+    <Content Include="fonts\RobotoTTF\RobotoCondensed-Italic.ttf" />
+    <Content Include="fonts\RobotoTTF\RobotoCondensed-Light.ttf" />
+    <Content Include="fonts\RobotoTTF\RobotoCondensed-LightItalic.ttf" />
+    <Content Include="fonts\RobotoTTF\RobotoCondensed-Regular.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -195,9 +217,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
