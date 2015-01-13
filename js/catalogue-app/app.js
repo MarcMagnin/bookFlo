@@ -159,7 +159,9 @@ app.directive('isotopethis', function () {
                     vertText.toggleClass("vertical-text-open");
 
                     var image = prev.find("img");
-                    image.addClass(image.attr('prevWidthClass'));
+                   // image.addClass(image.attr('prevWidthClass'));
+                    image.toggleClass("tileSelected");
+
                     if (image.attr('prevHeight')) {
                         image.animate({ "height": image.attr('prevHeight') + "px" }, 300, 'easeOutCubic');
                     }
@@ -180,16 +182,18 @@ app.directive('isotopethis', function () {
                 $this.toggleClass("tile-open");
 
                 var image = $this.find("img");
-                image.removeClass(function (index, css) {
-                    var elem = $(this);
-                    $(css.split(' ')).each(function () {
-                        var c = this.trim();
-                        if (this.indexOf("width") == 0) {
-                            image.attr('prevWidthClass', c);
-                            elem.removeClass(c);
-                        }
-                    });
-                });
+                //image.removeClass(function (index, css) {
+                //    var elem = $(this);
+                //    $(css.split(' ')).each(function () {
+                //        var c = this.trim();
+                //        if (this.indexOf("width") == 0) {
+                //            image.attr('prevWidthClass', c);
+                //            elem.removeClass(c);
+                //        }
+                //    });
+                //});
+
+                image.toggleClass("tileSelected");
                 var inner = $this.find(".inner-tile");
                 inner.css({
                     "max-height": $('#booksContainer').height() - 50 + "px",

@@ -48,7 +48,7 @@ a:hover {
 }
 
 .tileSelected{
-    width:auto;
+    width:auto !important;
 }
 .width1 {
     width:200px;
