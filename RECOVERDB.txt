@@ -14,7 +14,7 @@ from itemTags in item.Tags
 select new { Name = itemTags.ToString().ToLower(), Count = 1 };
 
 from item in docs.Item
-select new { Name = item.Title.ToString().ToLower(), Count = 1 };
+select new { Name = item.Theme.ToString().ToLower(), Count = 1 };
 
 from tagCount in results
 group tagCount by tagCount.Name
