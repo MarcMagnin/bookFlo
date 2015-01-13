@@ -10,103 +10,102 @@
     <link href="css/Menu2.css" rel="stylesheet" />
     <link href="css/admin.css" rel="stylesheet" />
     <link href="bootstrap-3.3.1-dist/dist/css/bootstrap.min.css" rel="stylesheet" />
-    
+    <link href="fonts/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet" />
     
 </head>
-<body class="drop-box" ng-app="BookFlo" ng-controller="mainController" ng-init="init()"
+<body ng-app="BookFlo" class="drop-box" ng-controller="mainController" ng-init="init()"
       ng-file-drop="onFileSelect($files)"
       ng-file-drop-available="true">
     <p class="footer">Designed by <a href="http://" target="_blank">Florie Briand</a> and Marc Magnin - 2014 </p>
 
 
-        <div id="booksContainer" class="tilesContainer">
-            <div class="tile tile-admin " ng-repeat="item in items" isotopethis=isotopethis>
-                <button class="btn btn-lg btn-danger delete-cross"
-                        ng-click="deleteItem($index, item)">
-                    X
-                </button>
-                <button class="btn btn-lg btn-success" ng-click="saveItem(item)">
-                    Save
-                </button>
-                 <input class="form-control" placeholder="Theme" ng-model="item.Theme" />
-                <tags item="item"></tags>
-                <input class="form-control" placeholder="Largeur" ng-model="item.Width" />            
-                
 
-                <div class="details hidden-object">
-                    <button class="btn btn-lg btn-primary" ng-click="addHeader($index, item)">
-                        + entête
+    <div id="booksContainer" class="tilesContainer">
+        <div class="tile tile-admin {{item.Theme}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
+            <button class="close"
+                    ng-click="deleteItem($index, item)">
+                <i class="fa fa-times"></i>
+            </button>
+            <button class="btn btn-lg btn-success" ng-click="saveItem(item)">
+                <i class="fa fa-save"></i>
+            </button>
+            <input class="form-control" placeholder="Theme" ng-model="item.Theme" />
+            <tags item="item"></tags>
+            <input class="form-control" placeholder="Largeur" ng-model="item.Width" />
+
+            <div class="hidden-object">
+                <div class="btn-group">
+                    <button class="btn btn-lg btn-primary" title="Add header" ng-click="addHeader($index, item)">
+                        <i class="fa fa-header"></i>
                     </button>
-                    <button class="btn btn-lg btn-primary" ng-click="addText($index, item)">
-                        + texte
+                    <button class="btn btn-lg btn-primary" title="Add text" ng-click="addText($index, item)">
+                        <i class="fa fa-pencil"></i>
                     </button>
-                    <button class="btn btn-lg btn-primary" ng-click="addImage($index, item)">
-                        + image
+                    <button class="btn btn-lg btn-primary" title="Add image" ng-click="addImage($index, item)">
+                        <i class="fa fa-image"></i>
                     </button>
+                </div>
+            </div>
+
+            <div class="inner-tile">
+                <div class="vertical-text">{{item.Theme}}</div>
+                <div class="details hidden-object" ng-controller="tileDetailController">
+                    <button class="close" ng-click="clearTitle(item)">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <textarea class="form-control text-area" placeholder="Titre" ng-model="item.Title">{{item.Title}}</textarea>
 
                 </div>
 
+                <div class="details hidden-object" ng-controller="tileDetailController">
 
-                <div class="inner-tile">
-                    <div class="vertical-text">{{item.Theme}}</div>
-                    <div class="details hidden-object" ng-controller="tileDetailController">
-                        <button class="btn btn-lg btn-danger  btn-small delete-cross2"
-                                ng-click="clearTitle(item)">
-                            X
+                    <button class="close" ng-click="clearDescription(item)">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <textarea class="form-control  text-area" placeholder="Description" ng-model="item.Description">{{item.Description}}</textarea>
+                </div>
+
+                <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
+
+
+
+                <div class="hidden-object">
+                    <div class="details" ng-repeat="detail in item.Details" ng-controller="tileDetailController">
+                        <button class="close" ng-click="deleteDetail($index, item)">
+                            <i class="fa fa-times"></i>
                         </button>
 
-                        <textarea class="form-control text-area" placeholder="Titre" ng-model="item.Title">{{item.Title}}</textarea>
-
-                    </div>
-
-                    <div class="details hidden-object" ng-controller="tileDetailController">
-                        <button class="btn btn-lg btn-danger  btn-small delete-cross2"
-                                ng-click="clearDescription(item)">
-                            X
-                        </button>
-                        <textarea class="form-control  text-area" placeholder="Description" ng-model="item.Description">{{item.Description}}</textarea>
-                    </div>
-
-                    <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
-
-                    
-
-                    <div class="hidden-object">
-                        <div class="details" ng-repeat="detail in item.Details" ng-controller="tileDetailController">
-                            <button class="btn btn-lg btn-danger btn-small delete-cross2"
-                                    ng-click="deleteDetail($index, item)">
-                                X
-                            </button>
-                            <div ng-switch="detail.type">
-                                <textarea ng-switch-when="title" class="form-control text-area" ng-model="detail.value"></textarea>
-                                <textarea ng-switch-when="text" class="form-control text-area" ng-model="detail.value"></textarea>
-                                <img ng-switch-when="image" class="drop-box drop-image details-image"
-                                     ng-file-drop="onAddImage($files,item, detail)"
-                                     ng-file-drop-available="true"
-                                     src="{{detail.value}}" />
-                            </div>
+                        <div ng-switch="detail.type">
+                            <textarea ng-switch-when="title" class="form-control text-area" ng-model="detail.value"></textarea>
+                            <textarea ng-switch-when="text" class="form-control text-area" ng-model="detail.value"></textarea>
+                            <img ng-switch-when="image" class="drop-box drop-image details-image"
+                                 ng-file-drop="onAddImage($files,item, detail)"
+                                 ng-file-drop-available="true"
+                                 src="{{detail.value}}" />
                         </div>
-                    </div>    
-
-
                     </div>
-                
+                </div>
+
+
             </div>
+
         </div>
+    </div>
 
     <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
     <!--<script src="js/isotope/isotope.pkgd.js"></script>
     <script src="js/isotope/masonryHorizontal.js"></script>-->
-    <script src="js/isotope/jquery.isotope.min.js"></script>
+    <script src="js/isotope/jquery.isotope.js"></script>
     <!--contains easing animations as well -->
     <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="js/stuff.js"></script>
 
     <script src="js/FileAPI.js"></script>
     <script src="js/angular-file-upload-html5-shim.js"></script>
+
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script src="js/angular-file-upload.js"></script>
-
     <script type="text/javascript" src="js/catalogue-app/appAdmin.js"></script>
     <script type="text/javascript" src="js/catalogue-app/controllers/mainController.js"></script>
     <script src="js/catalogue-app/controllers/tileDetailController.js"></script>

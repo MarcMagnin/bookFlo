@@ -95,23 +95,6 @@ app.directive('isotopethis', function () {
                 
             });
 
-            
-
-            //elm.addEventListener('mousewheel', function(event) {
-            //    var maxX = this.scrollWidth - this.offsetWidth;
-            //    var maxY = this.scrollHeight - this.offsetHeight;
-
-            //    if (this.scrollLeft + event.deltaX < 0 ||
-            //    this.scrollLeft + event.deltaX > maxX ||
-            //    this.scrollTop + event.deltaY < 0 ||
-            //    this.scrollTop + event.deltaY > maxY) {
-            //        event.preventDefault();
-            //        // manually take care of the scroll
-            //        this.scrollLeft = Math.max(0, Math.min(maxX, this.scrollLeft + event.deltaX));
-            //        this.scrollTop = Math.max(0, Math.min(maxY, this.scrollTop + event.deltaY));
-            //    }
-            //}, false);
-            // handle the mousewheel on tiles
             elm.mousewheel(function (event) {
                 
                 if (event.deltaY == 0) {
@@ -119,10 +102,10 @@ app.directive('isotopethis', function () {
                 }
                 
                 var openTile = elm.find(".inner-tile-open");
-                if (openTile && openTile[0] && openTile[0].scrollHeight > 600) {
+                if (openTile.hasVerticalScrollBar()) {
 
                     
-                    openTile.stop().animate({ scrollTop: '-=' + (50 * event.deltaY) + 'px' }, 50, 'easeOutQuint');
+                    openTile.stop().animate({ scrollTop: '-=' + (200 * event.deltaY) + 'px' }, 50, 'easeOutQuint');
                     //openTile.scrollTop(openTile.scrollTop()-(event.deltaY*20));
                     event.preventDefault();
                     event.stopPropagation();
@@ -166,7 +149,7 @@ app.directive('isotopethis', function () {
                     prev.toggleClass("tile");
                     prev.toggleClass("tile-open");
 
-                    prev.find(".hidden-object").slideToggle(150);
+                    prev.find(".hidden-object").hide();
                     var inner = prev.find(".inner-tile-open")
                     inner.toggleClass("inner-tile");
                     inner.toggleClass("inner-tile-open");
@@ -183,9 +166,10 @@ app.directive('isotopethis', function () {
                     // prev.find("img").animate({ "height": "100%" }, 300, 'easeOutCubic');
                     //prev.find("img").toggleClass("smallHeightImage");
                     if (prev.is($this)) {
-                        setTimeout(function () {
-                            $container.isotope('reLayout');
-                        }, 200);
+                        //setTimeout(function () {
+                        //    $container.isotope('reLayout');
+                        //}, 200);
+                        $container.isotope('reLayout');
                         prev = null;
                         return;
                     }
@@ -224,18 +208,12 @@ app.directive('isotopethis', function () {
            
                 $container.isotope('reLayout');
                 var details = $this.find(".hidden-object");
-                details.slideToggle(150);
-                setTimeout(function () {
-                    $container.isotope('reLayout');
-                }, 200);
-                //details.animate({ width: '500px' }, 200, 'easeOutQuint');
-                //    .after(function () {
-                //        $container.isotope('reLayout');
-                //        setTimeout(function () {
-                //            $container.isotope('reLayout');
-                //        },100);
-                //    });
-
+                //details.slideToggle(150);
+                details.show();
+                //setTimeout(function () {
+                //    $container.isotope('reLayout');
+                //}, 200);
+                $container.isotope('reLayout');
                 prev = $this;
             });
 

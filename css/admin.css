@@ -75,18 +75,17 @@
     max-width:400px;
     max-height:200px;
 }
-.delete-cross {
-    position:absolute;
-    right:0px;
-}
+
 .inner-tile {
     position:relative;
 }
-.delete-cross2 {
-    position:absolute;
-    right:0px;
-}
+
 .tileMenu {
     /*display :inline-block;*/
 
+}
+.details {
+    
+    max-width:625px;
+    position:relative;
 }

@@ -1,5 +1,7 @@
 ﻿var app = angular.module('BookFlo', ['angularFileUpload']);
 var prev;
+var $container = $('.tilesContainer');
+
 app.directive('tags', function ($http, $rootScope) {
     return {
         restrict: 'E',
@@ -82,29 +84,29 @@ app.directive('tags', function ($http, $rootScope) {
     };
 });
 
-var $container = $('.tilesContainer');
 app.directive('isotopethis', function () {
     return {
         link: function (scope, elm) {
 
-            $container.isotope('appended', elm);
-            setTimeout(function () {
-                $container.isotope('reLayout');
-            }, 200);
-
+            var img = elm.find(".tileHeroImage");
+            img.load(function () {
+                console.log($container);
+                $container.isotope('insert', elm);
+            });
 
             // handle the mousewheel on tiles
             elm.bind('mousewheel', function (event, delta, deltaX, deltaY) {
                 var openTile = elm.find(".inner-tile-open");
-                if (openTile.length > 0 && openTile.height() > 100) {
-                    openTile.stop().animate({ scrollTop: '-=' + (500 * deltaX) + 'px' }, 400, 'easeOutQuint');
-                    openTile.stop().animate({ scrollTop: '-=' + (500 * deltaY) + 'px' }, 400, 'easeOutQuint');
+                if (openTile.hasVerticalScrollBar()) {
+                    //openTile.stop().animate({ scrollTop: '-=' + (500 * deltaX) + 'px' }, 400, 'easeOutQuint');
+
+                    openTile.stop().animate({ scrollTop: '-=' + (200 * event.deltaY) + 'px' }, 50, 'easeOutQuint');
+                    //openTile.scrollTop(openTile.scrollTop()-(event.deltaY*20));
                     event.preventDefault();
                     event.stopPropagation();
                     event.stopImmediatePropagation();
                 }
             });
-
 
 
             elm.find("a").click(function () {
@@ -114,7 +116,6 @@ app.directive('isotopethis', function () {
                 //    var hiddenItems = $('.isotope-hidden');
                 //}, 300);
             });
-
 
             //// TILE CLICK
             elm.find(".tileHeroImage").click(function () {

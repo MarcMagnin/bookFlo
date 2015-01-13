@@ -7,7 +7,6 @@ $(document).ready(function () {
 
 
     $('body, html').mousewheel(function (event) {
-        console.log("X:" + event.deltaX + "   Y  :" + event.deltaY)
 
         if(event.deltaY != 0)
             $('#booksContainer').stop().animate({ scrollLeft: '-=' + (200 * event.deltaY) + 'px' }, 200, 'easeOutQuint');
@@ -64,7 +63,11 @@ var xStart, yStart = 0;
 //});
 
 
-
+(function ($) {
+    $.fn.hasVerticalScrollBar = function () {
+        return this.get(0).scrollHeight > this.get(0).clientHeight;
+    }
+})(jQuery);
 
 $(document).ready(function () {
 

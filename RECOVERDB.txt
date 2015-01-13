@@ -1,1 +1,22 @@
 ﻿\Server\Databases\System\> esentutl /p .\Data
+
+Items
+
+from doc in docs.Item
+let LastModified = doc["@metadata"]["Last-Modified"]
+select new { Title = doc.Title, LastModified}
+
+
+Tags
+
+from item in docs.Item
+from itemTags in item.Tags
+select new { Name = itemTags.ToString().ToLower(), Count = 1 };
+
+from item in docs.Item
+select new { Name = item.Title.ToString().ToLower(), Count = 1 };
+
+from tagCount in results
+group tagCount by tagCount.Name
+into g
+select new {Name = g.Key, Count = g.Sum(x => x.Count) };

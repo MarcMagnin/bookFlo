@@ -32,7 +32,7 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
    
     $scope.searchWord = "";
     //$rootScope.apiRootUrl = "http://82.226.165.21:8081/databases/BookFlo";
-    $rootScope.apiRootUrl = "http://localhost:8085/databases/BookFlo";
+    $rootScope.apiRootUrl = "http://localhost:8086/databases/BookFlo";
     //$rootScope.apiRootUrl = "http://62.23.104.30:3000/databases/BookFlo";
     $scope.items = [];
     $scope.tags = [];
@@ -110,19 +110,6 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
         });
     };
 
-    $scope.updateIllustrateur = function (illustrateur) {
-        $http({
-            method: 'PUT',
-            headers: { 'Raven-Entity-Name': 'Illustrateur' },
-            url: 'http://localhost:8081/databases/Illustrateurs/docs/' + illustrateur.Id,
-            data: angular.toJson(illustrateur)
-        }).
-        success(function (data, status, headers, config) {
-        }).
-        error(function (data, status, headers, config) {
-
-        });
-    };
 
     //http://localhost:8080/indexes/dynamic?query=Category:Ravens
 
