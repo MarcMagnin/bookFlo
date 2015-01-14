@@ -208,6 +208,11 @@ hr{
     white-space:nowrap;
 }
 .inner-tile-open{
+
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+
     margin:0px 0px 0px 0px;
     padding:0px;
     
@@ -229,12 +234,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 .inner-tile{
+
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
-    
+
     /*margin:10px;*/
     padding-right:20px;
     overflow-y:hidden;
@@ -392,11 +396,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     font-family: ArcherLight;
     font-size: 35px;
 }
-.vignette {
-    display: flex;
-    flex-direction:row;
-    align-items:flex-start;
-}
+
 .filters{
     font-family: ArcherLight;
     font-size: 35px;
