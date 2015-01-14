@@ -41,8 +41,7 @@
 
     <div id="booksContainer" class="tilesContainer">
         <div class="tile {{item.Theme|lowercase}} {{item.Tags|lowercase}}" ng-repeat="item in items" isotopethis=isotopethis>
-            <div class="inner-tile" style="display: inline-flex;
-    align-items: flex-start;">
+            <div class="inner-tile">
 
 
                 <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />

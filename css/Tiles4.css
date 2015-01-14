@@ -229,6 +229,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 .inner-tile{
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    
     /*margin:10px;*/
     padding-right:20px;
     overflow-y:hidden;
