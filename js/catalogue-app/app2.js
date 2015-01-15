@@ -13,7 +13,6 @@ app.directive('isotopethis', function () {
 
             });
 
-
             elm.mousewheel(function (event) {
 
                 if (event.deltaY == 0) {
@@ -56,22 +55,18 @@ app.directive('isotopethis', function () {
             elm.click(function () {
                 var $this = $(this);
 
-
-
-                //$container.isotope('layout');
-                // filters
+           
 
                 // close the menu if open
                 $('.subMenu').slideUp(200);
-
-
+             
                 if (prev) {
 
                     //restore right part height
                     var prevRightPart = prev.find("#right-part");
                     prevRightPart.css("height", 0);
                     prevRightPart.css("width", 0);
-
+                    prev.css("opacity", 0.5)
 
                     //prev.find(".tileTextArea").slideToggle(0);
                     //$container.isotope('reLayout');
@@ -100,12 +95,33 @@ app.directive('isotopethis', function () {
                         //setTimeout(function () {
                         //    $container.isotope('reLayout');
                         //}, 200);
+                        $('.tilesContainer-background').css("opacity", 1)
+                        $(".tile").css("opacity", 1)
+                        prev.css("filter", "grayscale(0)")
+                        prev.css("-webkit-filter", "grayscale(0)")
                         $container.isotope('reLayout');
                         prev = null;
                         return;
                     }
 
                 }
+                $('.tilesContainer-background').css("opacity", 0.5)
+                //var sum = $(".tile")
+                // .toEnumerable()
+                // .Where(function (i) { return i != elm })
+                //.TojQuery().each(function () { this.css("opacity", 0.5) })
+
+                $(".tile").css("opacity", 0.5)
+                $(".tile").css("filter", "grayscale(0.2)")
+                $(".tile").css("-webkit-filter", "grayscale(0.2)")
+
+
+                $(this).css("opacity", 1)
+                $(this).css("filter", "grayscale(0)")
+                $(this).css("-webkit-filter", "grayscale(0)")
+                //$container.isotope('layout');
+                // filters
+
                 $this.switchClass("tile", "tile-open");
 
 
