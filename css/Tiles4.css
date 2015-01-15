@@ -29,7 +29,7 @@ html, body {
     height: 100%; 
     width:100%;
     background-color: rgb(255, 255, 255) !important;
-    font-family: 'Roboto-Thin','Roboto-Black','RobotoCondensed-Light','Roboto-Light','Roboto-Thin', "Helvetica Neue", "Helvetica", sans-serif;
+    font-family: 'Josefin Slab','Roboto-Thin','Roboto-Black','RobotoCondensed-Light','Roboto-Light','Roboto-Thin', "Helvetica Neue", "Helvetica", serif;
     color: rgb(35, 35, 35);
     overflow-x:hidden;
     overflow-y:hidden;
@@ -192,7 +192,7 @@ hr{
     top:0;
     left:100%;
     padding:4px 0 0 10px;
-    font-size:1.1em;  
+    font-size:1.3em;  
     
     overflow:hidden;
 	-ms-transform: rotate(90deg);
