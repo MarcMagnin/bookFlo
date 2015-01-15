@@ -97,8 +97,8 @@ app.directive('isotopethis', function () {
                         //}, 200);
                         $('.tilesContainer-background').css("opacity", 1)
                         $(".tile").css("opacity", 1)
-                        $(".tile").css("filter", "grayscale(0) blur(0)")
-                        $(".tile").css("-webkit-filter", "grayscale(0) blur(0)")
+                        $(".tile").css("filter", "grayscale(0) ")
+                        $(".tile").css("-webkit-filter", "grayscale(0) ")
                         $container.isotope('reLayout');
                         prev = null;
                         return;
@@ -111,13 +111,13 @@ app.directive('isotopethis', function () {
                 // .Where(function (i) { return i != elm })
                 //.TojQuery().each(function () { this.css("opacity", 0.5) })
 
-                $(".tile").css("opacity", 0.4)
-                $(".tile").css("filter", "grayscale(0.6) blur(1px)")
-                $(".tile").css("-webkit-filter", "grayscale(0.6) blur(1px)")
+                $(".tile").css("opacity", 0.8)
+                $(".tile").css("filter", "grayscale(0.6)")
+                $(".tile").css("-webkit-filter", "grayscale(0.6)")
                 
                 $(this).css("opacity", 1)
-                $(this).css("filter", "grayscale(0) blur(0)")
-                $(this).css("-webkit-filter", "grayscale(0) blur(0)")
+                $(this).css("filter", "grayscale(0) ")
+                $(this).css("-webkit-filter", "grayscale(0)")
                 //$container.isotope('layout');
                 // filters
 
