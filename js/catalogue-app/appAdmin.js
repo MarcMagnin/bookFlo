@@ -89,9 +89,17 @@ app.directive('isotopethis', function () {
         link: function (scope, elm) {
 
             var img = elm.find(".tileHeroImage");
+          
+            // insert before to set up the Index scope during isotope getSortData()
+            $container.isotope('insert', elm);
             img.load(function () {
-                console.log($container);
-                $container.isotope('insert', elm);
+                $container.isotope({ sortBy: 'weight' });
+             //   $container.isotope('prepend', elm);
+                //$container.isotope({ sortBy: 'weight' });
+                // give the time for angular to evaluate the {{item.Index}} for the sortBy
+                //  $container.isotope('insert', elm);
+                $container.isotope('reLayout');
+                $container.isotope({ sortBy: 'original-order' });
             });
 
             // handle the mousewheel on tiles
@@ -124,10 +132,10 @@ app.directive('isotopethis', function () {
                 // filters
 
                 if (prev) {
-                    prev.find(".tileTextArea").slideToggle(0);
+                    //prev.find(".tileTextArea").slideToggle(0);
                     $container.isotope('reLayout');
 
-                    prev.find(".hidden-object").slideToggle(200);
+                    prev.find(".hidden-object").hide();
                     var inner = prev.find(".inner-tile-open")
 
                     inner.toggleClass("inner-tile");
@@ -179,12 +187,10 @@ app.directive('isotopethis', function () {
                 inner.css({
                     "max-height": $('#booksContainer').height() - 210 + "px",
                 });
-                $container.isotope('reLayout');
+                
                 var details = $this.find(".hidden-object");
-                details.slideToggle(200);
-                setTimeout(function () {
-                    $container.isotope('reLayout');
-                }, 200);
+                details.show();
+                $container.isotope('reLayout');
                 //details.animate({ width: '500px' }, 200, 'easeOutQuint');
                 //    .after(function () {
                 //        $container.isotope('reLayout');

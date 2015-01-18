@@ -89,3 +89,23 @@
     max-width:625px;
     position:relative;
 }
+
+.tile.ui-sortable-placeholder {
+    visibility: visible !important;
+    background: #aaa;
+    box-shadow: inset 0 0 100px #6c6c6c;
+}
+.tile.active {
+    box-shadow: inset 0 0 200px #6c6c6c;                
+}
+.tile.starting {
+    transition-property: none;
+}
+  
+.tile.grabbing {
+    transform: rotate(3deg);            
+    }
+.tile.moving {
+    box-shadow: #6c6c6c 0 0 5px 2px!important;
+    transition: transform 200ms ease;    
+}

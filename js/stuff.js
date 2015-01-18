@@ -75,15 +75,36 @@ $(document).ready(function () {
 
     var $window = $(window);
 
-
     var $container = $('.tilesContainer');
 
     // change layout mode
     //$container.isotope({ layoutMode: "masonryHorizontal" });
     $container.isotope({
         layoutMode: 'masonryHorizontal',
-        itemSelector: '.tile',
+        itemSelector: '.isotopey',
         masonryHorizontal: { rowHeight: 20 },
+        getSortData: {
+            weight: function (itemElem) { // function
+                if (!$(itemElem).scope())
+                    return 0;
+                if ($(itemElem).scope().item) {
+                    console.log($(itemElem).scope().item.Index);
+                    return parseFloat($(itemElem).scope().item.Index);
+                } else {
+                    var weight = $(itemElem).find('.index').text();
+                    console.log(weight);
+                    return parseFloat(weight.replace(/[\(\)]/g, ''));
+                }
+
+
+            }
+        },
+        //sortBy: 'weight',
+        sortAscending: true,
+        transformsEnabled: false,
+        onLayout: function() {
+            $container.css('overflow', 'visible');
+        }
     });
 
     //////

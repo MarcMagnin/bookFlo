@@ -2,6 +2,7 @@
 var Item = function () {
     this.Title= "";
     this.Images = [];
+    this.Index = 0;
 };
 var Attachment = function () {
     this.Nom = "";
@@ -39,8 +40,10 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
     
     //$http({ method: 'GET', url: $rootScope.apiRootUrl + 'indexes/dynamic/Illustrateur?include=Illustrations.,Id&pageSize=30&noCache=101515793' }).
     $scope.init = function () {
-        $http({ method: 'GET', url: $rootScope.apiRootUrl + '/indexes/Items?start=0&pageSize=200&sort=-LastModified' }).
+        //&sort=-LastModified
+        $http({ method: 'GET', url: $rootScope.apiRootUrl + '/indexes/Items?start=0&pageSize=200&sort=-Index' }).
             success(function (data, status, headers, config) {
+            //    data.Results.sort(function (a, b) { return b.Index -a.Index });
                 angular.forEach(data.Results, function (item, index) {
                     item.editing = false;
                     if (item.Images) {
@@ -48,7 +51,9 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
                     }
                     item.Id = item['@metadata']['@id'];
                     $scope.items.push(item);
-                });
+
+                  
+                }); 
             }).
             error(function (data, status, headers, config) {
                 console.log(data);
@@ -111,7 +116,6 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
     };
 
 
-    //http://localhost:8080/indexes/dynamic?query=Category:Ravens
 
     $scope.addHeader = function ($index, item) {
         if (!item.Details)
@@ -157,7 +161,7 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
             });
     }
 
-        $scope.addText = function ($index, item) {
+    $scope.addText = function ($index, item) {
             if(!item.Details) 
                 item.Details = new Array();
             item.Details.push({
@@ -196,6 +200,7 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
  
 
     $scope.deleteItem = function ($index, item) {
+
         if( item.Images &&  item.Images.length>0)
         $http({
             method: 'DELETE',
@@ -204,7 +209,7 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
           success(function (data, status, headers, config) {
           }).
           error(function (data, status, headers, config) {
-
+              console.log(data);
           });
 
         $http({
@@ -214,34 +219,75 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
         }).
           success(function (data, status, headers, config) {
               $scope.items.splice($index, 1);
+              setTimeout(function () {
+                $container.isotope('reLayout');
+             },100);
+          
+              // decrement index of items with higher index
+              angular.forEach($scope.items, function (itemWithHigherIndex, index) {
+
+                  if (itemWithHigherIndex.Index > item.Index) {
+                      itemWithHigherIndex.Index = --itemWithHigherIndex.Index;
+                  }
+
+               
+                  $http({
+                      method: 'PUT',
+                      headers: { 'Raven-Entity-Name': 'Item' },
+                      url: $rootScope.apiRootUrl + '/docs/' + itemWithHigherIndex.Id,
+                      data: angular.toJson(itemWithHigherIndex)
+                  }).
+                   success(function (data, status, headers, config) {
+
+                   }).
+                   error(function (data, status, headers, config) {
+                       console.log(data);
+                   });
+              });
+
+
           }).
           error(function (data, status, headers, config) {
-
+              console.log(data);
           });
 
     }
 
-    // ajout d'un nouvel d'illustrateur
+    // ajout d'un tile
     $scope.addItem = function (callback) {
-        var item = new Item;
-        item.Title = "";
-        item.Width = "1";
-        item.Height = "1";
-        item.Modified = new Date().toISOString();
-        $http({
-            method: 'PUT',
-            headers: { 'Raven-Entity-Name': 'Item' },
-            url: $rootScope.apiRootUrl + '/docs/Item%2F',
-            data: angular.toJson(item)
-        }).
-            success(function (data, status, headers, config) {
-                item.Id = data.Key;
-                $scope.items.unshift(item);
-                callback(item);
+        // get the last index of items 
+            $http({
+                method: 'GET',
+                url: $rootScope.apiRootUrl + '/indexes/Items?query=&start=0&pageSize=0',
+            }).success(function (data, status, headers, config) {
+                // add the new item with the last index :
+                var item = new Item;
+                item.Title = "";
+                item.Width = "1";
+                item.Index = data.TotalResults + 1;
+                item.Modified = new Date().toISOString();
+                $http({
+                    method: 'PUT',
+                    headers: { 'Raven-Entity-Name': 'Item' },
+                    url: $rootScope.apiRootUrl + '/docs/Item%2F',
+                    data: angular.toJson(item)
+                }).
+                    success(function (data, status, headers, config) {
+                        item.Id = data.Key;
+                        $scope.items.unshift(item);
+                        //$scope.items.push(item);
+                        callback(item);
+                    }).
+                    error(function (data, status, headers, config) {
+                        console.log(data);
+                    });
+
             }).
             error(function (data, status, headers, config) {
                 console.log(data);
             });
+
+        
     };
 
     // ajout d'image sans illustrateur

@@ -8,9 +8,9 @@ app.directive('isotopethis', function () {
         link: function (scope, elm) {
 
             var tileImage = elm.find(".tileHeroImage");
+            $container.isotope('insert', elm);
             tileImage.load(function () {
-                $container.isotope('insert', elm);
-
+                $container.isotope('reLayout');
             });
 
             elm.mousewheel(function (event) {

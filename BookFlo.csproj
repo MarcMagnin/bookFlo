@@ -198,6 +198,7 @@
     <Content Include="js\linq.js_ver2.2.0.2\test\testrunner.jquery.min.htm" />
     <Content Include="js\linq.js_ver2.2.0.2\test\testrunner.min.htm" />
     <Content Include="js\stuff.js" />
+    <Content Include="js\stuffAdmin.js" />
     <Content Include="RECOVERDB.txt" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -20,8 +20,9 @@
 
 
 
-    <div id="booksContainer" class="tilesContainer">
-        <div class="tile tile-admin {{item.Theme}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
+    <div id="booksContainer" class="tilesContainer"><!--| orderBy:'Index':true--> 
+        <div class="tile isotopey tile-admin {{item.Theme}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
+            <p class="index">{{item.Index}}</p>
             <button class="close"
                     ng-click="deleteItem($index, item)">
                 <i class="fa fa-times"></i>
@@ -31,7 +32,7 @@
             </button>
             <input class="form-control" placeholder="Theme" ng-model="item.Theme" />
             <tags item="item"></tags>
-            <input class="form-control" placeholder="Largeur" ng-model="item.Width" />
+            <!--<input class="form-control" placeholder="Largeur" ng-model="item.Width" />-->
 
             <div class="hidden-object">
                 <div class="btn-group">
@@ -100,7 +101,7 @@
     <!--contains easing animations as well -->
     <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="js/stuff.js"></script>
-
+    <script src="js/stuffAdmin.js"></script>
     <script src="js/FileAPI.js"></script>
     <script src="js/angular-file-upload-html5-shim.js"></script>
 

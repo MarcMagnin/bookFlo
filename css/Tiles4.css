@@ -141,11 +141,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8c8c8c', end
     scrollbar-face-color : rgba(3, 255, 8, 0.17);  
 }
 
-.tilesContainer:after {
+/*.tilesContainer:after {
   content: '';
   display: block;
   clear: both;
-}
+}*/
 
 a {
     cursor:pointer;
@@ -295,12 +295,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     overflow-x:hidden;
 }
 
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
 
 .tile {
-   
-    float: left;
-    /*display: flex;
-    align-items: flex-start;*/
   cursor:pointer;
     
     margin-right: 10px;
@@ -311,9 +315,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 .tile-open {
     
-    float: left;
-    /*display: flex;
-    align-items: flex-start;*/
     cursor:pointer;
     margin-right: 10px;
     margin-top: 5px;
@@ -453,3 +454,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     cursor: pointer;
     padding-left: 15px;
 }
+
+
