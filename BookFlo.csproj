@@ -161,50 +161,12 @@
     <Content Include="js\jquery-1.9.1.js" />
     <Content Include="js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="js\jquery.mousewheel.min.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\bindings\linq.jquery.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\bindings\linq.rx.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\bindings\RxVSDocGenerator\Mono.Cecil.dll" />
-    <Content Include="js\linq.js_ver2.2.0.2\bindings\RxVSDocGenerator\ReadMe_RxVSDocGenerator.txt" />
-    <Content Include="js\linq.js_ver2.2.0.2\bindings\RxVSDocGenerator\RxVSDocGenerator.exe" />
-    <None Include="js\linq.js_ver2.2.0.2\jquery.linq-vsdoc.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\jquery.linq.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\jquery.linq.min.js" />
-    <None Include="js\linq.js_ver2.2.0.2\linq-vsdoc.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\linq.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\linq.min.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\ReadMe.txt" />
-    <Content Include="js\linq.js_ver2.2.0.2\reference.htm" />
-    <Content Include="js\linq.js_ver2.2.0.2\sample\script.wsf" />
-    <Content Include="js\linq.js_ver2.2.0.2\sample\tutorial.htm" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\action.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\aggregate.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\arrayEnumerable.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\convert.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\dictionary.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\enumerable.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\errorHandling.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\functional.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\grouping.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\join.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\jquery-1.4.1.min.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\ordering.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\paging.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\projection.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\qunit.css" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\qunit.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\set.js" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\testrunner.htm" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\testrunner.jquery.htm" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\testrunner.jquery.min.htm" />
-    <Content Include="js\linq.js_ver2.2.0.2\test\testrunner.min.htm" />
     <Content Include="js\stuff.js" />
     <Content Include="js\stuffAdmin.js" />
     <Content Include="RECOVERDB.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="js\linq.js_ver2.2.0.2\bindings\RxVSDocGenerator\RxVSDocGenerator.cs" />
-    <Compile Include="js\linq.js_ver2.2.0.2\sample\LinqJS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -249,16 +211,6 @@
     <Content Include="fonts\RobotoTTF\RobotoCondensed-Light.ttf" />
     <Content Include="fonts\RobotoTTF\RobotoCondensed-LightItalic.ttf" />
     <Content Include="fonts\RobotoTTF\RobotoCondensed-Regular.ttf" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\Action0.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\Action1.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\Action2.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\EnumerableFrom.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\EnumerableRange.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\Func0.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\Func1.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\Func2.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\jQueryEnumerableFrom.snippet" />
-    <Content Include="js\linq.js_ver2.2.0.2\snippets\jQueryEnumerableRange.snippet" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

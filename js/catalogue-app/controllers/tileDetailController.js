@@ -103,7 +103,7 @@
 
                         //$scope.uploadResult.push(data);
                         // Put somewhere 
-                        detailItem.value = url;
+                        detailItem.value = 'static/' + item.Id + '/details/' + $scope.selectedFiles[index].name;
 
                         $scope.$parent.saveItem(item);
 

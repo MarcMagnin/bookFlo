@@ -22,6 +22,10 @@ app.directive('isotopethis', function () {
                 var openTile = elm.find(".right-part");
                 if (openTile.hasVerticalScrollBar()) {
 
+                    //console.log(openTile.get(0).scrollHeight  + " " + openTile.get(0).scrollBottom)
+                    //if (openTile.get(0).scrollHeight == openTile.scrollBottom()) {
+                    //    return;
+                    //}
 
                     openTile.stop().animate({ scrollTop: '-=' + (200 * event.deltaY) + 'px' }, 250, 'easeOutQuint');
                     //openTile.scrollTop(openTile.scrollTop()-(event.deltaY*20));
@@ -82,9 +86,9 @@ app.directive('isotopethis', function () {
                     vertText.toggleClass("vertical-text");
                     vertText.toggleClass("vertical-text-open");
 
-                    var image = prev.find("img");
+                    var image = prev.find("img").first();
                     // image.addClass(image.attr('prevWidthClass'));
-                    image.toggleClass("tileSelected");
+                    image.toggleClass("tileHeroImage-selected");
 
                     if (image.attr('prevHeight')) {
                         image.animate({ "height": image.attr('prevHeight') + "px" }, 300, 'easeOutCubic');
@@ -121,10 +125,23 @@ app.directive('isotopethis', function () {
                 //$container.isotope('layout');
                 // filters
 
+                var image = $this.find("img").first();
+                image.toggleClass("tileHeroImage-selected");
+
+                // set inner size
+                var inner = $this.find(".inner-tile");
+                inner.css({
+                    "max-height": $('#booksContainer').height() - 30 + "px",
+                });
+                image.css({
+                    "max-height": $('#booksContainer').height() - 30 + "px",
+                });
+
+
                 $this.switchClass("tile", "tile-open");
+                
 
-
-                var image = $this.find("img");
+                
                 //image.removeClass(function (index, css) {
                 //    var elem = $(this);
                 //    $(css.split(' ')).each(function () {
@@ -135,8 +152,8 @@ app.directive('isotopethis', function () {
                 //        }
                 //    });
                 //});
-
-                image.toggleClass("tileSelected");
+                
+               
 
                 //set right part size
                 var rightPart = $this.find("#right-part");
@@ -146,10 +163,7 @@ app.directive('isotopethis', function () {
 
 
 
-                var inner = $this.find(".inner-tile");
-                inner.css({
-                    "max-height": $('#booksContainer').height() - 50 + "px",
-                });
+                
 
                 inner.toggleClass("inner-tile");
                 inner.toggleClass("inner-tile-open");

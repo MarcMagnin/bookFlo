@@ -48,20 +48,22 @@
 
                 <img class="tileHeroImage width{{item.Width}}" src="{{apiRootUrl}}/{{item.Images[0].Url}}" />
 
-                <div id="right-part" class="right-part">
-                    <div class="details hidden-object">
-                        <p class="tile-header">{{item.Title}}</p>
-                        <hr />
-                        <p>{{item.Description}}</p>
-                    </div>
+                <div id="right-part" class="right-part hidden-object">
+                    <div class="inner-right-part">
+                        <div class="details hidden-object">
+                            <p class="tile-header">{{item.Title}}</p>
+                            <hr />
+                            <p>{{item.Description}}</p>
+                        </div>
 
 
 
-                    <div class="details hidden-object" ng-repeat="detail in item.Details">
-                        <div ng-switch="detail.type">
-                            <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
-                            <p ng-switch-when="text">{{detail.value}}</p>
-                            <img ng-switch-when="image" class="details-image" src="{{detail.value}}" />
+                        <div  ng-repeat="detail in item.Details">
+                            <div ng-switch="detail.type">
+                                <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
+                                <p ng-switch-when="text">{{detail.value}}</p>
+                                <img ng-switch-when="image" class="details-image" src="{{apiRootUrl}}/{{detail.value}}" />
+                            </div>
                         </div>
                     </div>
                 </div>

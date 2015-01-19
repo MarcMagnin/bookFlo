@@ -62,7 +62,7 @@
                             <div ng-switch="detail.type">
                                 <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
                                 <p ng-switch-when="text">{{detail.value}}</p>
-                                <img ng-switch-when="image" class="details-image" src="{{detail.value}}" />
+                                <img ng-switch-when="image" class="details-image" src="{{apiRootUrl}}/{{detail.value}}" />
                             </div>
                         </div>
                     </div>

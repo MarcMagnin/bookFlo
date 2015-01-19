@@ -22,31 +22,38 @@
 
     <div id="booksContainer" class="tilesContainer"><!--| orderBy:'Index':true--> 
         <div class="tile isotopey tile-admin {{item.Theme}} {{item.Tags}}" ng-repeat="item in items" isotopethis=isotopethis>
-            <p class="index">{{item.Index}}</p>
+            <p class="index hide">{{item.Index}}</p>
             <button class="close"
                     ng-click="deleteItem($index, item)">
                 <i class="fa fa-times"></i>
             </button>
-            <button class="btn btn-lg btn-success" ng-click="saveItem(item)">
-                <i class="fa fa-save"></i>
-            </button>
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <button class="btn btn-lg btn-success" ng-click="saveItem(item)">
+                        <i class="fa fa-save"></i>
+                    </button>
+                </div>
+                
+                    <div class="hidden-object">
+                        <div class="btn-group">
+                            <button class="btn btn-lg btn-primary" title="Add header" ng-click="addHeader($index, item)">
+                                <i class="fa fa-header"></i>
+                            </button>
+                            <button class="btn btn-lg btn-primary" title="Add text" ng-click="addText($index, item)">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-lg btn-primary" title="Add image" ng-click="addImage($index, item)">
+                                <i class="fa fa-image"></i>
+                            </button>
+                        </div>
+                </div>
+            </div>
+
             <input class="form-control" placeholder="Theme" ng-model="item.Theme" />
             <tags item="item"></tags>
             <!--<input class="form-control" placeholder="Largeur" ng-model="item.Width" />-->
 
-            <div class="hidden-object">
-                <div class="btn-group">
-                    <button class="btn btn-lg btn-primary" title="Add header" ng-click="addHeader($index, item)">
-                        <i class="fa fa-header"></i>
-                    </button>
-                    <button class="btn btn-lg btn-primary" title="Add text" ng-click="addText($index, item)">
-                        <i class="fa fa-pencil"></i>
-                    </button>
-                    <button class="btn btn-lg btn-primary" title="Add image" ng-click="addImage($index, item)">
-                        <i class="fa fa-image"></i>
-                    </button>
-                </div>
-            </div>
+            
 
             <div class="inner-tile">
                 <div class="vertical-text">{{item.Theme}}</div>
@@ -82,7 +89,7 @@
                             <img ng-switch-when="image" class="drop-box drop-image details-image"
                                  ng-file-drop="onAddImage($files,item, detail)"
                                  ng-file-drop-available="true"
-                                 src="{{detail.value}}" />
+                                 src="{{apiRootUrl}}/{{detail.value}}" />
                         </div>
                     </div>
                 </div>
