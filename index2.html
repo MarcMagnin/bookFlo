@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Florie Briand's portfolio</title>
+    <link href="bootstrap-3.3.1-dist/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="js/lightbox-master/dist/ekko-lightbox.min.css" rel="stylesheet" />
     <link href="css/Tiles4.css" rel="stylesheet" />
     <link href="css/Menu2.css" rel="stylesheet" />
+    
     <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css' />
+    
+
+
+    <link href="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.css" rel="stylesheet" />
+    <link href="//rawgithub.com/ashleydw/lightbox/gh-pages/css/dark.css" rel="stylesheet" />
 
 </head>
 <body ng-app="BookFlo" ng-controller="mainController" ng-init="init()">
@@ -62,7 +70,11 @@
                             <div ng-switch="detail.type">
                                 <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
                                 <p ng-switch-when="text">{{detail.value}}</p>
-                                <img ng-switch-when="image" class="details-image" src="{{apiRootUrl}}/{{detail.value}}" />
+                                <a ng-switch-when="image" class="details-image" href="{{apiRootUrl}}/{{detail.value}}" data-toggle="lightbox" >
+                                    <img class="img-responsive" src="{{apiRootUrl}}/{{detail.value}}" />
+                                </a>
+
+                               
                             </div>
                         </div>
                     </div>
@@ -72,14 +84,20 @@
         </div>
 
     </div>
+
+  
+
+    
     <script src="js/jquery-1.9.1.js"></script>
+    <script src="bootstrap-3.3.1-dist/dist/js/bootstrap.js"></script>
+    <!--<script src="js/jquery-ui-1.10.3.custom.min.js"></script>-->
     <script src="js/jquery.mousewheel.min.js"></script>
-    <!--<script src="js/isotope/isotope.pkgd.js"></script>
-    <script src="js/isotope/masonryHorizontal.js"></script>-->
     <script src="js/isotope/jquery.isotope.js"></script>
     <!--contains easing animations as well -->
+
+
     <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="js/linq.js_ver2.2.0.2/jquery.linq.js"></script>
+    <script src="js/lightbox-master/dist/ekko-lightbox.js"></script>
     <script src="js/stuff.js"></script>
 
     <script type="text/javascript" src="js/angular.min.js"></script>

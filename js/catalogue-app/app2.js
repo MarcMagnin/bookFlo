@@ -11,6 +11,18 @@ app.directive('isotopethis', function () {
             $container.isotope('insert', elm);
             tileImage.load(function () {
                 $container.isotope('reLayout');
+
+                // Image modal
+                elm.delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+                    return $(this).ekkoLightbox({
+                        always_show_close: true,
+                        type:'image',
+                    });
+                });
+
             });
 
             elm.mousewheel(function (event) {
@@ -57,6 +69,9 @@ app.directive('isotopethis', function () {
                 //}, 300);
             });
 
+         
+
+
             //// TILE CLICK
             elm.click(function () {
                 var $this = $(this);
@@ -67,7 +82,6 @@ app.directive('isotopethis', function () {
                 $('.subMenu').slideUp(200);
              
                 if (prev) {
-
                     //restore right part height
                     var prevRightPart = prev.find("#right-part");
                     prevRightPart.css("height", 0);

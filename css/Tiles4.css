@@ -133,6 +133,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8c8c8c', end
 	overflow-x: scroll !important;
 	-webkit-overflow-scrolling: touch;
 
+    -webkit-box-sizing:content-box !important;
+    -moz-box-sizing:content-box !important;
+    box-sizing:content-box !important;
         
     scrollbar-base-color : transparent;  
     scrollbar-track-color : transparent;
@@ -453,3 +456,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 
+.modal {
+    height:100%;
+    overflow-y: hidden;
+}
+.modal-open .modal {
+    overflow-y: hidden;
+}
+.modal-dialog {
+    height:100%;
+}
+.modal-content {
+    height:100%;
+}
+.modal-body {
+    max-height:85%;
+    overflow-y:auto
+}

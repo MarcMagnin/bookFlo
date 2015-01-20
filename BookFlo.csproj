@@ -85,7 +85,6 @@
     <Content Include="js\angular-file-upload-html5-shim.js" />
     <Content Include="js\angular-file-upload.js" />
     <Content Include="js\angular.min.js" />
-    <Content Include="js\bootstrap.min.js" />
     <Content Include="js\catalogue-app\app2.js" />
     <Content Include="js\catalogue-app\app.js" />
     <Content Include="js\catalogue-app\appAdmin.js" />
@@ -218,7 +217,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="js\lightbox-master\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
