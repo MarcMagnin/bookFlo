@@ -229,7 +229,6 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
                   if (itemWithHigherIndex.Index > item.Index) {
                       itemWithHigherIndex.Index = --itemWithHigherIndex.Index;
                   }
-
                
                   $http({
                       method: 'PUT',
@@ -244,13 +243,10 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
                        console.log(data);
                    });
               });
-
-
           }).
           error(function (data, status, headers, config) {
               console.log(data);
           });
-
     }
 
     // ajout d'un tile
@@ -333,7 +329,6 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
 
     // ajout d'image sans illustrateur
     $scope.onFileSelect = function ($files) {
-
         $scope.uploadRightAway = true;
         $scope.selectedFiles = [];
         $scope.progress = [];
@@ -376,7 +371,6 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
         $scope.addItem(function (item, $index) {
             $scope.url = $rootScope.apiRootUrl + '/static/' + item.Id + '/' + $scope.selectedFiles[index].name;
 
-
             var fileReader = new FileReader();
             fileReader.onload = function (e) {
                 $scope.upload[index] =
@@ -390,12 +384,9 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
                         $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
                     }).success(function (data) {
 
-
                         //$scope.uploadResult.push(data);
                         // Put somewhere else 
                         $scope.addImageToItem($scope.selectedFiles[index].name, item, $index);
-
-
 
                     }).error(function (data) {
                         //error

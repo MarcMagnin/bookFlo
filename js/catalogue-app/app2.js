@@ -14,18 +14,20 @@ app.directive('isotopethis', function () {
             });
 
             elm.mousewheel(function (event) {
-
                 if (event.deltaY == 0) {
                     return;
                 }
-
                 var openTile = elm.find(".right-part");
                 if (openTile.hasVerticalScrollBar()) {
-
-                    //console.log(openTile.get(0).scrollHeight  + " " + openTile.get(0).scrollBottom)
-                    //if (openTile.get(0).scrollHeight == openTile.scrollBottom()) {
-                    //    return;
-                    //}
+                    // if scroll is at top or bottom, just leave it
+                    // bottom 
+                    if (openTile.outerHeight() == openTile[0].scrollHeight - openTile.scrollTop() && event.deltaY < 0) {
+                        return;
+                    }
+                    // top
+                    if ( openTile.scrollTop() == 0  && event.deltaY > 0) {
+                        return;
+                    }
 
                     openTile.stop().animate({ scrollTop: '-=' + (200 * event.deltaY) + 'px' }, 250, 'easeOutQuint');
                     //openTile.scrollTop(openTile.scrollTop()-(event.deltaY*20));
