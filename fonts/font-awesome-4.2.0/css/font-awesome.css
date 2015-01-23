@@ -29,13 +29,13 @@
   font-size: 2em;
 }
 .fa-3x {
-  font-size: 3em;
-}
-.fa-4x {
   font-size: 4em;
 }
+.fa-4x {
+  font-size: 8em;
+}
 .fa-5x {
-  font-size: 5em;
+  font-size: 10em;
 }
 .fa-fw {
   width: 1.28571429em;

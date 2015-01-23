@@ -33,15 +33,11 @@
         
     }
 
-    $scope.onDeleteImage =function(item, detailItem){
-        
-        
-    }
-    // ajout d'image à un item
-    $scope.onAddImage = function ($files, item, detailItem) {
 
+
+    $scope.onAddImage = function ($files, item, fieldName, itemDetail) {
         // delete prev image if overridden
-        deleteImage(detailItem.value);
+        deleteImage(itemDetail[fieldName]);
 
 
         $scope.uploadRightAway = true;
@@ -76,38 +72,35 @@
             }
             $scope.progress[i] = -1;
             if ($scope.uploadRightAway) {
-                $scope.startUpload(i, item, detailItem);
+                var imageName = $scope.selectedFiles[i].name;
+                var imageType = $scope.selectedFiles[i].type;
+                var imageRelativeUrl = 'static/' + item.Id + '/details/' + imageName;
+                var uploadUrl = $rootScope.apiRootUrl + "/" + imageRelativeUrl;
+                
+                $scope.startUpload(i, item, itemDetail, imageType, uploadUrl,imageRelativeUrl, fieldName);
             }
         }
-    };
+    }
 
-
-    $scope.startUpload = function (index, item, detailItem) {
+    $scope.startUpload = function (index, item, itemDetail, imageType, uploadUrl, imageRelativeUrl, fieldName) {
         $scope.progress[index] = 0;
-        url = $rootScope.apiRootUrl + '/static/' + item.Id + '/details/' + $scope.selectedFiles[index].name;
-
-
-            var fileReader = new FileReader();
-            fileReader.onload = function (e) {
+        var fileReader = new FileReader();
+        fileReader.onload = function (e) {
                 $scope.upload[index] =
                     $upload.http({
-                        url: url,
+                        url: uploadUrl,
                         method: "PUT",
-                        headers: { 'Content-Type': $scope.selectedFiles[index].type },
+                        headers: { 'Content-Type': imageType },
                         data: e.target.result
                     }).progress(function (evt) {
                         // Math.min is to fix IE which reports 200% sometimes
                         $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
                     }).success(function (data) {
 
-
                         //$scope.uploadResult.push(data);
-                        // Put somewhere 
-                        detailItem.value = 'static/' + item.Id + '/details/' + $scope.selectedFiles[index].name;
-
+                        // Save the item
+                        itemDetail[fieldName] = imageRelativeUrl;
                         $scope.$parent.saveItem(item);
-
-
 
                     }).error(function (data) {
                         //error

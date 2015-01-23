@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Editions Thierry Magnier</title>
+    <link href="bootstrap-3.3.1-dist/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="fonts/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet" />
     <link href="css/Slider.css" rel="stylesheet" />
     <link href="css/Tiles2.css" rel="stylesheet" />
     <link href="css/Menu2.css" rel="stylesheet" />
     <link href="css/admin.css" rel="stylesheet" />
-    <link href="bootstrap-3.3.1-dist/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="fonts/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet" />
+
     
 </head>
 <body ng-app="BookFlo" class="drop-box" ng-controller="mainController" ng-init="init()"
@@ -86,10 +87,22 @@
                         <div ng-switch="detail.type">
                             <textarea ng-switch-when="title" class="form-control text-area" ng-model="detail.value"></textarea>
                             <textarea ng-switch-when="text" class="form-control text-area" ng-model="detail.value"></textarea>
-                            <img ng-switch-when="image" class="drop-box drop-image details-image"
-                                 ng-file-drop="onAddImage($files,item, detail)"
-                                 ng-file-drop-available="true"
-                                 src="{{apiRootUrl}}/{{detail.value}}" />
+                            <div ng-switch-when="image" class="inline-images">
+                                <div class="details-image-container">
+                                    <i class="fa fa-picture-o fa-3x fa-li"></i>
+                                    <img class="drop-box drop-image details-image"
+                                         ng-file-drop="onAddImage($files, item, 'low', detail)"
+                                         ng-file-drop-available="true"
+                                         src="{{apiRootUrl}}/{{detail.low}}" />
+                                </div>
+                                <div class="details-image-container">
+                                    <i class="fa fa-picture-o fa-5x fa-li"></i>
+                                    <img class="drop-box drop-image details-image"
+                                         ng-file-drop="onAddImage($files, item, 'high', detail)"
+                                         ng-file-drop-available="true"
+                                         src="{{apiRootUrl}}/{{detail.high}}" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

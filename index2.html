@@ -70,8 +70,8 @@
                             <div ng-switch="detail.type">
                                 <p ng-switch-when="title" class="tile-header">{{detail.value}}</p>
                                 <p ng-switch-when="text">{{detail.value}}</p>
-                                <a ng-switch-when="image" class="details-image" href="{{apiRootUrl}}/{{detail.value}}" data-toggle="lightbox" >
-                                    <img class="img-responsive" src="{{apiRootUrl}}/{{detail.value}}" />
+                                <a ng-switch-when="image" class="details-image" href="{{apiRootUrl}}/{{detail.high}}" data-toggle="lightbox" >
+                                    <img class="img-responsive" src="{{apiRootUrl}}/{{detail.low}}" />
                                 </a>
 
                                
