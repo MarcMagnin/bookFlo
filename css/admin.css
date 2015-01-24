@@ -75,6 +75,7 @@
     box-shadow: inset 0 0 100px #6c6c6c;
 }
 .inline-images {
+    z-index:2;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -83,12 +84,12 @@
     width:100%;
 }
 .fa-li {
-    width:100%;
-  margin: auto;
+    
   position: absolute;
-  left: 0; right: 0;
-   top: 50%;                    
-   transform: translate(0, -50%)
+top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
 }
 .details-image-container {
     position:relative;
