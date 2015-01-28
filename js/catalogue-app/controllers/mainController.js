@@ -33,7 +33,7 @@ app.controller("mainController", ['$scope', '$rootScope', '$http', '$timeout', '
    
     $scope.searchWord = "";
     //$rootScope.apiRootUrl = "http://82.226.165.21:8081/databases/BookFlo";
-    $rootScope.apiRootUrl = "http://localhost:8088/databases/BookFlo";
+    $rootScope.apiRootUrl = "http://localhost:8086/databases/BookFlo";
     //$rootScope.apiRootUrl = "http://62.23.104.30:3000/databases/BookFlo";
     $scope.items = [];
     $scope.tags = [];
